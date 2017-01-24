@@ -2,7 +2,7 @@ name = BYU Calendar Widget
 description = Pulls configured categories' events from calendar.byu.edu and displays them in blocks.
 core = 7.x 
 
-dependencies[] = calendar, date, views
+dependencies[] = calendar, date, date_views
 
 configure = admin/structure/taxonomy-updater
 package = BYU Custom
