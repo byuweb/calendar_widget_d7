@@ -383,8 +383,6 @@ function current_posts_block_view($delta = '') {
           }
         }
         return $block;
-
-      }
-
   }
+
 }
