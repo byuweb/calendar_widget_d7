@@ -37,10 +37,25 @@ function calendar_widget_menu() {
 
 
 function calendar_widget_form($form, &$form_state) {
-  // add form item to select which vocabulary is to be updated
-  //https://api.drupal.org/api/drupal/modules!taxonomy!taxonomy.module/function/taxonomy_get_vocabularies/7.x
 
-  // php get how many days are in this mont
+
+
+
+  $form['info'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Cron status information'),
+  );
+  $form['info']['intro'] = array(
+      '#markup' => '<div>' . t('The cron example demonstrates hook_cron() and hook_cron_queue_info() processing. If you have administrative privileges you can run cron from this page and see the results.') . '</div>',
+  );
+  $form['info']['last'] = array(
+      '#markup' => '<div>' . t('calendar_widget_cron() will next execute the first time cron runs after %time (%seconds seconds from now)',
+              array(
+                  '%time' => date_iso8601(variable_get('calendar_widget_next_execution', time())),
+                  '%seconds' => variable_get('calendar_widget_next_execution', time()) - time(),
+              )
+          ) . '</div>',
+  );
 
   $form['calendar_widget_block_1'] = array(
       '#type' => 'fieldset',
@@ -58,22 +73,6 @@ function calendar_widget_form($form, &$form_state) {
           14 => t('14 days'),
           30 => t('30 days'),
       ),
-  );
-
-  $form['status'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Cron status information'),
-  );
-  $form['status']['intro'] = array(
-      '#markup' => '<div>' . t('The cron example demonstrates hook_cron() and hook_cron_queue_info() processing. If you have administrative privileges you can run cron from this page and see the results.') . '</div>',
-  );
-  $form['status']['last'] = array(
-      '#markup' => '<div>' . t('calendar_widget_cron() will next execute the first time cron runs after %time (%seconds seconds from now)',
-              array(
-                  '%time' => date_iso8601(variable_get('calendar_widget_next_execution', time())),
-                  '%seconds' => variable_get('calendar_widget_next_execution', time()) - time(),
-              )
-          ) . '</div>',
   );
 
   if (user_access('administer site configuration')) {
@@ -299,3 +298,24 @@ function calendar_widget_queue_report_work($worker, $item) {
 /**
  * @} End of "defgroup calendar_widget".
  */
+
+
+/**
+ * Implements hook_block_info().
+ * You can use a given hook exactly once in any module, so this hook must declare all blocks the module needs.
+ */
+function calendar_widget_block_info() {
+  $blocks['calendar_widget_block_1'] = array(
+    // The name that will appear in the block list.
+      'info' => t('Calendar Widget Block 1'),
+    // Default setting.
+      'cache' => DRUPAL_CACHE_PER_ROLE,
+  );
+  $blocks['calendar_widget_block_2'] = array(
+    // The name that will appear in the block list.
+      'info' => t('Calendar Widget Block 2'),
+    // Default setting.
+      'cache' => DRUPAL_CACHE_PER_ROLE,
+  );
+  return $blocks;
+}
