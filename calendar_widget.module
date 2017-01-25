@@ -380,6 +380,8 @@ function current_posts_block_view($delta = '') {
             //Pass data through theme function.
             $block['content'] = theme('item_list', array(
                 'items' => $items));
+            $block['content'] = t('There are events.');
+            // calendar_widget_fetch_events(){
           }
         }
         return $block;
