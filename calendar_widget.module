@@ -380,7 +380,7 @@ function calendar_widget_block_view($delta = '') {
             //Pass data through theme function.
             $block['content'] = theme('item_list', array(
                 'items' => $items));
-            $block['content'] = t('There are events.');
+//            $block['content'] = t('There are events.');
             // calendar_widget_fetch_events(){
           }
         }
