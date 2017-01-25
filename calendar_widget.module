@@ -16,15 +16,15 @@
  */
 function calendar_widget_help($path, $arg) {
 
-  if($path == 'admin/structure') {
-    return t('This site has stuff');
-  }
+//  if($path == 'admin/structure') {
+//    return t('This site has stuff');
+//  }
 }
 
 function calendar_widget_menu() {
   $items['admin/config/date/calendar-widget'] = array(
       'title' => 'Calendar Widget',
-      'description' => 'Update the vocabulary containing BYU departments',
+      'description' => 'Set up calendar widget blocks to display events pulled from calendar.byu.edu.',
 //      'page callback' => 'calendar_widget_overview_page',
       'page callback' => 'drupal_get_form',
       'page arguments' => array('calendar_widget_form'),
@@ -39,6 +39,26 @@ function calendar_widget_menu() {
 function calendar_widget_form($form, &$form_state) {
   // add form item to select which vocabulary is to be updated
   //https://api.drupal.org/api/drupal/modules!taxonomy!taxonomy.module/function/taxonomy_get_vocabularies/7.x
+
+  // php get how many days are in this mont
+
+  $form['calendar_widget_block_1'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Configuring Calendar Widget Block 1'),
+  );
+  $form['calendar_widget_block_1']['calendar_widget_dates'] = array(
+      '#type' => 'select',
+      '#title' => t('Included Dates'),
+      '#description' => t('Time after which calendar_widget_cron will check for updates on the next cron run.'),
+      '#default_value' => variable_get('calendar_widget_dates', 7),
+      '#options' => array(
+          1 => t('1 day (today only)'),
+          7 => t('7 days'),
+          10 => t('10 days'),
+          14 => t('14 days'),
+          30 => t('30 days'),
+      ),
+  );
 
   $form['status'] = array(
       '#type' => 'fieldset',
