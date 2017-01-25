@@ -153,7 +153,6 @@ function calendar_widget_cron() {
 
   // what do to on cron run
 
-    }
     watchdog('calendar_widget', 'calendar_widget ran');
     if (!empty($GLOBALS['calendar_widget_show_status_message'])) {
       drupal_set_message(t('BYU Departments were updated at %time', array('%time' => date_iso8601(time(0)))));
