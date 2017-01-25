@@ -22,7 +22,7 @@ function calendar_widget_help($path, $arg) {
 }
 
 function calendar_widget_menu() {
-  $items['admin/structure/calendar-widget'] = array(
+  $items['admin/config/date/calendar-widget'] = array(
       'title' => 'Calendar Widget',
       'description' => 'Update the vocabulary containing BYU departments',
 //      'page callback' => 'calendar_widget_overview_page',

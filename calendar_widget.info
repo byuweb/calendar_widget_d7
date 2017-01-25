@@ -4,5 +4,5 @@ core = 7.x
 
 dependencies[] = calendar
 
-configure = admin/structure/taxonomy-updater
+configure = admin/config/date/calendar-widget
 package = BYU Custom
