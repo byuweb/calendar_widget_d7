@@ -319,3 +319,72 @@ function calendar_widget_block_info() {
   );
   return $blocks;
 }
+
+/* -- custom fxn to fetch calendar events and return data for a block -- */
+function calendar_widget_fetch_events(){
+  // placeholder
+  $eventsData = '<h2>This is a header</h2><p>HEre is some text.</p><p>And here is some more text.</p>';
+
+  return $eventsData;
+}
+/* test function to fetch events posted recently -- */
+function calendar_widget_contents() {
+  //Get today's date
+  $today = getdate();
+  //Calculate the date a week ago.
+  $start_time = mktime(0, 0, 0, $today['mon'], ($today['mday'] - 7), $today['year']);
+  //Get all posts from one week ago to the present.
+  $end_time = time();
+
+  //Use Database API to retrieve current posts.
+  $recentNodes = db_select('node', 'n')
+      ->fields('n', array('nid', 'title', 'created'))
+      ->condition('status', 1) //Published.
+      ->condition('created', array($start_time, $end_time), 'BETWEEN')
+      ->orderBy('created', 'DESC') //Most recent first.
+      ->execute();
+  return $recentNodes;
+
+}
+
+
+/*
+*
+ *
+*/
+
+function current_posts_block_view($delta = '') {
+  switch ($delta) {
+    case 'calendar_widget_block_1':
+      $block['subject'] = t('Calendar Widget Text');
+      if (user_access('access content')) {
+        // Retrieve and process data here.
+        // Use our custom function to retrieve data.
+        $result = calendar_widget_contents();
+        // Array to contain items for the block to render.
+        $items = array();
+        // Iterate over the result set and format as links.
+        foreach ($result as $node) {
+          $items[] = array(
+              'data' => l($node->title, 'node/' . $node->nid),
+          );
+        }
+
+
+        // return back to the block
+        // No data returned for the block / no events.
+          if (empty($items)) {
+            $block['content'] = t('No events.');
+          }
+          else {
+            //Pass data through theme function.
+            $block['content'] = theme('item_list', array(
+                'items' => $items));
+          }
+        }
+        return $block;
+
+      }
+
+  }
+}
