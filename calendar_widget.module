@@ -353,7 +353,7 @@ function calendar_widget_contents() {
  *
 */
 
-function current_posts_block_view($delta = '') {
+function calendar_widget_block_view($delta = '') {
   switch ($delta) {
     case 'calendar_widget_block_1':
       $block['subject'] = t('Calendar Widget Text');
