@@ -22,8 +22,8 @@ function calendar_widget_help($path, $arg) {
 }
 
 function calendar_widget_menu() {
-  $items['admin/structure/taxonomy-updater'] = array(
-      'title' => 'Taxonomy Updater',
+  $items['admin/structure/calendar-widget'] = array(
+      'title' => 'Calendar Widget',
       'description' => 'Update the vocabulary containing BYU departments',
 //      'page callback' => 'calendar_widget_overview_page',
       'page callback' => 'drupal_get_form',
