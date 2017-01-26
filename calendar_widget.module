@@ -343,14 +343,98 @@ function calendar_widget_fetch_events(){
 
   // placeholder
   //
-  $json_string = 'https://calendar-test.byu.edu/api/Events.json?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
+  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
+  //$jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $cats;
 
-  $jsondata = file_get_contents($json_string);
-  $arr = json_decode($jsondata, true);
+  $options = array(
+      'http' => array(
+          'method' => "GET",
+          'header' => "Accept: application/json\r\n"
+      )
+  );
 
-  $eventsData = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
+  $context = stream_context_create($options);
 
-  return $arr;
+  $result = file_get_contents($jsonUrl, false, $context);
+
+  $jsonArr = json_decode($result, true);
+
+  $html = "";
+
+  $currentTime = new DateTime();
+  $currentTime->setTimestamp(strtotime("now"));
+
+  $first_item = true;
+
+  foreach($jsonArr as $item) {
+    $new_date = new DateTime();
+    $new_date->setTimestamp(strtotime($item['StartDateTime']));
+
+    if ($first_item) {
+      $html .= '<div class="date">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div>';
+      $currentTime = $new_date;
+      $first_item = false;
+    }
+
+    $diff = $currentTime->diff($new_date);
+
+    if ($diff->format('%a') !== '0') {
+      $html .= '<div class="date">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div>';
+      $currentTime = $new_date;
+    }
+
+    $html .='<div class="event">';
+
+    $html .= '<img src="http://calendar.byu.edu' . $item['ImgUrl'] . '">';
+    $html .= '<div class="event-content">';
+    $html .= '<div class="title">' . $item['Title'] . '</div>';
+
+    if ($item['AllDay'] == false) {
+      $html .= '<div class="time">' . date("g:i A", strtotime($item['StartDateTime']));
+      if ($item['EndDateTime'] != null) {
+        $html .= ' - ' . date("g:i A", strtotime($item['EndDateTime']));
+      }
+      $html .= ' MT </div>';
+    } else {
+      $html .= '<div class="time">All Day</div>';
+    }
+    if ($item['LocationName'] != null) {
+      $html .= '<div class="location">' . $item['LocationName'] . ' - <a href="http://maps.google.com/?q=' . $item['Latitude'] . ',' . $item['Longitude'] . '&z=18" target="_blank">View Map</a></div>';
+    }
+    if ($item['LowPrice'] == 0.0 && $item['LowPrice'] != null) {
+      $html .= '<div class="price">FREE</div>';
+    } else if ($item['LowPrice'] == null) {
+      $html .= '';
+    } else {
+      $html .= '<div class="price">$' . $item['LowPrice'];
+      if ($item['HighPrice'] != null) {
+        $html .= ' - $' . $item['HighPrice'];
+      }
+      $html .= '</div>';
+    }
+    $item_id = uniqid();
+    if (strlen($item['Description']) <= 100) {
+      $html .= '<div class="description" data-id="' . $item_id . '">' . $item['Description'] . '<br><a href="' . $item['MoreInformationUrl'] . '">More Information</a><br><a href="http://calendar.byu.edu/iCal/Event/' . $item['EventId'] . '">Download iCal</a></div>';
+    } else {
+      $partial_description = truncate($item['Description'], 100);
+      $html .= '<div class="partial-description show" data-id="' . $item_id . '">' . $partial_description . '... <a href="#" class="see-more" data-id="' . $item_id . '">See More</a></div>';
+      $html .= '<div class="description hidden" data-id="' . $item_id . '">' . $item['Description'] . '<br><a href="' . $item['MoreInformationUrl'] . '">More Information</a><br><a href="http://calendar.byu.edu/iCal/Event/' . $item['EventId'] . '">Download iCal</a></div>';
+    }
+    $html .= '</div>';
+    $html .= '</div>';
+  }
+
+//  echo $html;
+
+
+
+
+//  $jsondata = file_get_contents($json_string);
+//  $arr = json_decode($jsondata, true);
+
+//  $eventsData = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
+
+  return $html;
 }
 /* test function to fetch events posted recently -- */
 function calendar_widget_contents() {
@@ -390,11 +474,17 @@ function calendar_widget_block_view($delta = '') {
         // Array to contain items for the block to render.
         $items = array();
         // Iterate over the result set and format as links.
-        foreach ($result as $node) {
-          $items[] = array(
-              'data' => l($node->title, 'node/' . $node->nid),
-          );
-        }
+//        foreach ($result as $event) {
+//          $block_body .=
+//        }
+
+
+
+//        foreach ($result as $node) {
+//          $items[] = array(
+//              'data' => l($node->title, 'node/' . $node->nid),
+//          );
+//        }
 //        $block['content'] = t('There are probably events.');
 
         // return back to the block
