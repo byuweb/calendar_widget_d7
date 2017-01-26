@@ -343,21 +343,21 @@ function calendar_widget_fetch_events(){
 
   // placeholder
   //
-  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
-  //$jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $cats;
-
-  $options = array(
-      'http' => array(
-          'method' => "GET",
-          'header' => "Accept: application/json\r\n"
-      )
-  );
-
-  $context = stream_context_create($options);
-
-  $result = file_get_contents($jsonUrl, false, $context);
-
-  $jsonArr = json_decode($result, true);
+//  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
+//  //$jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $cats;
+//
+//  $options = array(
+//      'http' => array(
+//          'method' => "GET",
+//          'header' => "Accept: application/json\r\n"
+//      )
+//  );
+//
+//  $context = stream_context_create($options);
+//
+//  $result = file_get_contents($jsonUrl, false, $context);
+//
+//  $jsonArr = json_decode($result, true);
 
   $html = "<h3>test: </h3>";
 
