@@ -326,12 +326,12 @@ function calendar_widget_block_info() {
 function calendar_widget_fetch_events(){
   // pull how many days forward to go
   $days = variable_get('calendar_widget_dates', 7);
-
-  //Get today's date
-  $today = getdate();
-  $startDate = date_format($today, 'Y-m-d');
   // today's time
   $startTime = time();
+  //Get today's date
+  $startDateOb = date_create("@$startTime");
+  $startDate = date_format($startDateOb, 'Y-m-d');
+
   //Calculate the date a week ago.
   //$end_time = mktime(0, 0, 0, $today['mon'], ($today['mday'] + $days), $today['year']);
   $endTime = $startTime + ($days * 24 * 3600);
