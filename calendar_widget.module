@@ -341,7 +341,7 @@ function calendar_widget_fetch_events(){
   // convert to Y-m-d format
 
   // placeholder
-  $eventsData = '<h3>' . $startDate . ' through ' . $endDate '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
+  $eventsData = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 
   return $eventsData;
 }
