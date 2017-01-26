@@ -343,28 +343,32 @@ function calendar_widget_fetch_events(){
 
   // placeholder
   //
-//  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
+  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
 //  //$jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $cats;
 //
-//  $options = array(
-//      'http' => array(
-//          'method' => "GET",
-//          'header' => "Accept: application/json\r\n"
-//      )
-//  );
-//
-//  $context = stream_context_create($options);
-//
-//  $result = file_get_contents($jsonUrl, false, $context);
-//
-//  $jsonArr = json_decode($result, true);
+  $options = array(
+      'http' => array(
+          'method' => "GET",
+          'header' => "Accept: application/json\r\n"
+      )
+  );
 
-  $html = "<h3>test: </h3>";
+  $context = stream_context_create($options);
+
+  $result = file_get_contents($jsonUrl, false, $context);
+
+  $jsonArr = json_decode($result, true);
+  if (empty($jsonArr)) {
+    // list is empty.
+    $html = "<h3>No events.</h3>";
+  } else {
+
+    $html = "<h3>test: </h3>";
 //
 //  $currentTime = new DateTime();
 //  $currentTime->setTimestamp(strtotime("now"));
 
-  $first_item = true;
+    $first_item = true;
 
 //  foreach($jsonArr as $item) {
 //    $html .= '<p>There is an event.<p>';
@@ -424,7 +428,7 @@ function calendar_widget_fetch_events(){
 //    $html .= '</div>';
 //    $html .= '</div>';
 //  }
-
+  }
 //  echo $html;
 
 
