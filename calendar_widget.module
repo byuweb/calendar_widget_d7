@@ -75,6 +75,7 @@ function calendar_widget_form($form, &$form_state) {
       ),
   );
 
+
   if (user_access('administer site configuration')) {
     $form['cron_run'] = array(
         '#type' => 'fieldset',
@@ -302,6 +303,7 @@ function calendar_widget_queue_report_work($worker, $item) {
 
 /**
  * Implements hook_block_info().
+ * Define all the blocks for this module.
  * You can use a given hook exactly once in any module, so this hook must declare all blocks the module needs.
  */
 function calendar_widget_block_info() {
@@ -322,6 +324,18 @@ function calendar_widget_block_info() {
 
 /* -- custom fxn to fetch calendar events and return data for a block -- */
 function calendar_widget_fetch_events(){
+  // pull how many days forward to go
+  $days = variable_get('calendar_widget_dates', 7);
+
+  //Get today's date
+  $today = getdate();
+  // today's time
+  $startTime = time();
+  //Calculate the date a week ago.
+  //$end_time = mktime(0, 0, 0, $today['mon'], ($today['mday'] + $days), $today['year']);
+  $endTime = $startTime + ($days * 24 * 3600);
+  // convert to Y-m-d format
+
   // placeholder
   $eventsData = '<h2>This is a header</h2><p>HEre is some text.</p><p>And here is some more text.</p>';
 
@@ -360,7 +374,8 @@ function calendar_widget_block_view($delta = '') {
       if (user_access('access content')) {
         // Retrieve and process data here.
         // Use our custom function to retrieve data.
-        $result = calendar_widget_contents();
+//        $result = calendar_widget_contents();
+        $result = calendar_widget_fetch_events();
         // Array to contain items for the block to render.
         $items = array();
         // Iterate over the result set and format as links.
