@@ -359,7 +359,7 @@ function calendar_widget_fetch_events(){
 
   $jsonArr = json_decode($result, true);
 
-  $html = "";
+  $html = "<h3>test: </h3>";
 
   $currentTime = new DateTime();
   $currentTime->setTimestamp(strtotime("now"));
@@ -367,7 +367,7 @@ function calendar_widget_fetch_events(){
   $first_item = true;
 
   foreach($jsonArr as $item) {
-    $html .= '<p>There is an event.<p>';
+//    $html .= '<p>There is an event.<p>';
 //    $new_date = new DateTime();
 //    $new_date->setTimestamp(strtotime($item['StartDateTime']));
 //
