@@ -366,7 +366,7 @@ function calendar_widget_fetch_events(){
 
   $first_item = true;
 
-  foreach($jsonArr as $item) {
+//  foreach($jsonArr as $item) {
 //    $html .= '<p>There is an event.<p>';
 //    $new_date = new DateTime();
 //    $new_date->setTimestamp(strtotime($item['StartDateTime']));
@@ -423,7 +423,7 @@ function calendar_widget_fetch_events(){
 //    }
 //    $html .= '</div>';
 //    $html .= '</div>';
-  }
+//  }
 
 //  echo $html;
 
