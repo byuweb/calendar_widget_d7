@@ -388,13 +388,15 @@ function calendar_widget_block_view($delta = '') {
 
         // return back to the block
         // No data returned for the block / no events.
-          if (empty($items)) {
+          if (empty($result)) {
             $block['content'] = t('No events.');
           }
           else {
             //Pass data through theme function.
-            $block['content'] = theme('item_list', array(
-                'items' => $items));
+            $block['content'] = theme($result);
+
+            //$block['content'] = theme('item_list', array(
+//                'items' => $items));
 //            $block['content'] = t('There are events.');
             // calendar_widget_fetch_events(){
           }
