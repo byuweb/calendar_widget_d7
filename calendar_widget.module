@@ -342,9 +342,15 @@ function calendar_widget_fetch_events(){
   // convert to Y-m-d format
 
   // placeholder
+  //
+  $json_string = 'https://calendar-test.byu.edu/api/Events.json?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
+
+  $jsondata = file_get_contents($json_string);
+  $arr = json_decode($jsondata, true);
+
   $eventsData = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 
-  return $eventsData;
+  return $arr;
 }
 /* test function to fetch events posted recently -- */
 function calendar_widget_contents() {
