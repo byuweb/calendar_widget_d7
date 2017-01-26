@@ -360,9 +360,9 @@ function calendar_widget_fetch_events(){
 //  $jsonArr = json_decode($result, true);
 
   $html = "<h3>test: </h3>";
-
-  $currentTime = new DateTime();
-  $currentTime->setTimestamp(strtotime("now"));
+//
+//  $currentTime = new DateTime();
+//  $currentTime->setTimestamp(strtotime("now"));
 
   $first_item = true;
 
@@ -433,9 +433,9 @@ function calendar_widget_fetch_events(){
 //  $jsondata = file_get_contents($json_string);
 //  $arr = json_decode($jsondata, true);
 
-//  $eventsData = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
+  $eventsData = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 
-  return $html;
+  return $eventsData;
 }
 /* test function to fetch events posted recently -- */
 function calendar_widget_contents() {
