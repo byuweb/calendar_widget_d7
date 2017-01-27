@@ -3,7 +3,6 @@ description = Pulls configured categories' events from calendar.byu.edu and disp
 core = 7.x 
 
 dependencies[] = calendar:calendar
-dependencies[] = drupal:taxonomy
 dependencies[] = drupal:system (>= 7.40)
 #this naming style is after drupal 7.40
 
