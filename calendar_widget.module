@@ -60,7 +60,8 @@ function calendar_widget_form($form, &$form_state) {
       '#title' => t('Most Popular Category Ids'),
   );
   $form['category_ids']['intro'] = array(
-      '#markup' => '<div>' . t('The BYU Calendar site provides extensive options for subscribing to various categories (main categories, tags, departments, etc). You can see the full list of options at https://calendar.byu.edu/subscribe. Below are the most common category ids for your convenience.') . '</div>',
+      '#markup' => '<div>' . t('The BYU Calendar site provides extensive options for subscribing to various categories (main categories, tags, departments, etc). You can see the full list of options at <a href="https://calendar.byu.edu/subscribe" target="_blank">https://calendar.byu.edu/subscribe</a>.
+Below are the most common category ids for your convenience.') . '</div>',
   );
   $form['category_ids']['home'] = array(
       '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("90 - Subscribe to all events featured on the BYU Homepage.") . '</div>',
@@ -93,7 +94,7 @@ function calendar_widget_form($form, &$form_state) {
       '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("9,10,6,7,4,47,49,52 - Use all main category ids to subscribe to ALL events on the entire calendar.byu.edu website.") . '</div>',
   );
   $form['category_ids']['own'] = array(
-      '#markup' => '<div>' . t("If you would like to submit your own <strong>collection of events</strong> through the calendar.byu.edu system and have your own department or group id, contact BYU Communications at https://calendar.byu.edu/contact.") . '</div>',
+      '#markup' => '<div>' . t('If you would like to submit your own <strong>collection of events</strong> through the calendar.byu.edu system and have your own department or group id, contact BYU Communications at <a href="https://calendar.byu.edu/contact" target="_blank">https://calendar.byu.edu/contact</a>.') . '</div>',
   );
 
 
