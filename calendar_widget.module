@@ -341,11 +341,13 @@ function calendar_widget_fetch_events(){
 
   // convert to Y-m-d format
 
+  // get categories
+  $cats = '10+151';
   // placeholder
   //
-  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
-//  //$jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $cats;
-//
+//  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
+  $jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $cats;
+
   $options = array(
       'http' => array(
           'method' => "GET",
@@ -364,6 +366,7 @@ function calendar_widget_fetch_events(){
   } else {
 
 //    $html = "<h3>test: </h3>";
+    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 //
 //  $currentTime = new DateTime();
 //  $currentTime->setTimestamp(strtotime("now"));
@@ -371,7 +374,7 @@ function calendar_widget_fetch_events(){
     $first_item = true;
 
   foreach($jsonArr as $item) {
-    $html .= '<p>There is an event.<p>';
+//    $html .= '<p>There is an event.<p>';
     $new_date = new DateTime();
     $new_date->setTimestamp(strtotime($item['StartDateTime']));
 
