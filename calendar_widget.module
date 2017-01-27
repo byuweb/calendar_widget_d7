@@ -313,7 +313,7 @@ function calendar_widget_list_format($jsonArr, $startDate, $endDate) {
     $html = "<h3>No events.</h3>";
   } else {
 
-    $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . '">test: </div>';
+    $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . '">';
 //    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 //
   $currentTime = new DateTime();
@@ -396,7 +396,7 @@ function calendar_widget_vertical_tiles_limited($jsonArr, $startDate, $endDate) 
     $html = "<h3>No events.</h3>";
   } else {
 
-    $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . '"></div>';
+    $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . '">';
 //    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 //
   $currentTime = new DateTime();
