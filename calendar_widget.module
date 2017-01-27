@@ -43,18 +43,17 @@ function calendar_widget_form($form, &$form_state) {
 
   $form['info'] = array(
       '#type' => 'fieldset',
-      '#title' => t('Cron status information'),
+      '#title' => t('BYU Calendar Widget Information'),
   );
   $form['info']['intro'] = array(
-      '#markup' => '<div>' . t('The cron example demonstrates hook_cron() and hook_cron_queue_info() processing. If you have administrative privileges you can run cron from this page and see the results.') . '</div>',
+      '#markup' => '<div>' . t('The BYU Calendar Widget provides various calendar blocks to show events from calendar.byu.edu on your website. Each block can be configured to display events for a specific category(ies) and in a specific display type.') . '</div>',
   );
+  $form['info']['components'] = array(
+      '#markup' => '<div>' . t("The tile display types require the use of BYU Component 'Calendar Tile'. To add this library, [[ insert instructions and links here - possibly make a drupal module for getting the library(ies) desired.]]") . '</div>',
+  );
+
   $form['info']['last'] = array(
-      '#markup' => '<div>' . t('calendar_widget_cron() will next execute the first time cron runs after %time (%seconds seconds from now)',
-              array(
-                  '%time' => date_iso8601(variable_get('calendar_widget_next_execution', time())),
-                  '%seconds' => variable_get('calendar_widget_next_execution', time()) - time(),
-              )
-          ) . '</div>',
+      '#markup' => '<div>' . t('If you wish to submit your own events to the BYU Calendar, you can do so at calendar.byu.edu/node/add/event. You can request your own category id to subscribe to only your events, or yours and others.') . '</div>',
   );
 
   $form['calendar_widget_block_1'] = array(
@@ -75,13 +74,13 @@ function calendar_widget_form($form, &$form_state) {
       ),
   );
   $form['calendar_widget_block_1']['calendar_widget_categories'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Categories'),
-    '#description' => t('The category ids for the categories you want to show events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. 90 is the category id for all events featured on the byu.edu homepage. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
-    '#default_value' => '90',
-    '#size' => 60,
-    '#maxlength' =>60,
-    '#required' => TRUE,
+      '#type' => 'textfield',
+      '#title' => t('Categories'),
+      '#description' => t('The category ids for the categories you want to show events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. 90 is the category id for all events featured on the byu.edu homepage. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
+      '#default_value' => '',
+      '#size' => 60,
+      '#maxlength' =>60,
+      '#required' => TRUE,
   );
   $form['calendar_widget_block_1']['calendar_widget_display_type'] = array(
       '#type' => 'select',
@@ -89,11 +88,11 @@ function calendar_widget_form($form, &$form_state) {
       '#description' => t('There are several display types available for this calendar block. To preview these display types see  [[ link here ]] . The tile formats require the BYU Component calendar tile. Read more at [[ link ]].'),
       '#default_value' => variable_get('calendar_widget_dates', 7),
       '#options' => array(
-          1 => t('Simple List, grouped by date.'),
-          2 => t('Vertical tiles, limited to the first 3 events'),
-          3 => t('Horizontal tiles, limited to the first 3 events'),
-          4 => t('Vertical tiles, displaying 3 in a slider'),
-          5 => t('Horizontal tiles, displaying 3 in a slider'),
+          1 => t('Simple List (grouped by date)'),
+          2 => t('Vertical tiles (limited to the first 3 events)'),
+          3 => t('Horizontal tiles (limited to the first 3 events)'),
+          4 => t('Vertical tile slider (displaying 3 at a time)'),
+          5 => t('Horizontal tile slider (displaying 3 at a time)'),
       ),
   );
 
