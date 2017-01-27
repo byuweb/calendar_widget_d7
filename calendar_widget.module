@@ -382,7 +382,7 @@ function calendar_widget_fetch_events(){
     $new_date->setTimestamp(strtotime($item['StartDateTime']));
 
     if ($first_item) {
-      $html .= '<div class="date">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div>';
+      $html .= '<h3><div class="date">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div></h3>';
       $currentTime = $new_date;
       $first_item = false;
     }
@@ -396,7 +396,7 @@ function calendar_widget_fetch_events(){
 
     $html .='<div class="event">';
 
-    $html .= '<img src="' . $item['ImgUrl'] . '">';
+//    $html .= '<img src="' . $item['ImgUrl'] . '">';
     $html .= '<div class="event-content">';
     $html .= '<a href="' . $item['FullUrl'] . ' " target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
 
