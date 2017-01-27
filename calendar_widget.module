@@ -77,28 +77,19 @@ function calendar_widget_form($form, &$form_state) {
   $form['calendar_widget_block_1']['calendar_widget_categories'] = array(
     '#type' => 'textfield',
     '#title' => t('Categories'),
-    '#description' => t('The category ids for the categories you want events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. 90 is the category id for all events featured on the byu.edu homepage. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
+    '#description' => t('The category ids for the categories you want to show events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. 90 is the category id for all events featured on the byu.edu homepage. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
     '#default_value' => '90',
     '#size' => 60,
     '#maxlength' =>60,
     '#required' => TRUE,
   );
 
-
-//  $form['calendar_widget_block_1']['calendar_widget_categories'] = array(
-//      '#type' => 'textfield',
-//      '#title' => t('Categories'),
-//      '#description' => t('The category ids for the categories you want events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. 90 is the category id for all events featured on the byu.edu homepage. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
-//      '#default_value' => variable_get('calendar_widget_categories', 90),
-//
-//  );
-
-
   if (user_access('administer site configuration')) {
     $form['cron_run'] = array(
         '#type' => 'fieldset',
         '#title' => t('Run cron manually'),
     );
+    $form['cron_run']['cron_reset'] = array(
     $form['cron_run']['cron_reset'] = array(
         '#type' => 'checkbox',
         '#title' => t("Run calendar_widget's cron regardless of whether interval has expired."),
@@ -363,11 +354,14 @@ function calendar_widget_fetch_events(){
   // convert to Y-m-d format
 
   // get categories
-  $cats = '10+151';
+  $categoriesString = variable_get('calendar_widget_categories', 90);
+
+  $categories = str_replace(",", "+", $categoriesString);
+  $categories = str_replace(" ", "", $categories);
   // placeholder
   //
 //  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
-  $jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $cats;
+  $jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $categories;
 
   $options = array(
       'http' => array(
@@ -387,7 +381,7 @@ function calendar_widget_fetch_events(){
   } else {
 
 //    $html = "<h3>test: </h3>";
-    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
+//    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 //
 //  $currentTime = new DateTime();
 //  $currentTime->setTimestamp(strtotime("now"));
