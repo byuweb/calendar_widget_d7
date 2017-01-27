@@ -384,7 +384,7 @@ function calendar_widget_fetch_events(){
     $diff = $currentTime->diff($new_date);
 
     if ($diff->format('%a') !== '0') {
-      $html .= '<div class="date">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div>';
+      $html .= '<h3><div class="date">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div></h3>';
       $currentTime = $new_date;
     }
 
@@ -392,7 +392,7 @@ function calendar_widget_fetch_events(){
 
     $html .= '<img src="http://calendar.byu.edu' . $item['ImgUrl'] . '">';
     $html .= '<div class="event-content">';
-    $html .= '<div class="title">' . $item['Title'] . '</div>';
+    $html .= '<a href="' . $item['ShortUrl'] . ' " target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
 
     if ($item['AllDay'] == false) {
       $html .= '<div class="time">' . date("g:i A", strtotime($item['StartDateTime']));
