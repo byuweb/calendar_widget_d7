@@ -363,7 +363,7 @@ function calendar_widget_fetch_events(){
     $html = "<h3>No events.</h3>";
   } else {
 
-    $html = "<h3>test: </h3>";
+//    $html = "<h3>test: </h3>";
 //
 //  $currentTime = new DateTime();
 //  $currentTime->setTimestamp(strtotime("now"));
@@ -390,9 +390,9 @@ function calendar_widget_fetch_events(){
 
     $html .='<div class="event">';
 
-    $html .= '<img src="http://calendar.byu.edu' . $item['ImgUrl'] . '">';
+    $html .= '<img src="' . $item['ImgUrl'] . '">';
     $html .= '<div class="event-content">';
-    $html .= '<a href="' . $item['ShortUrl'] . ' " target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
+    $html .= '<a href="' . $item['FullUrl'] . ' " target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
 
     if ($item['AllDay'] == false) {
       $html .= '<div class="time">' . date("g:i A", strtotime($item['StartDateTime']));
@@ -403,28 +403,28 @@ function calendar_widget_fetch_events(){
     } else {
       $html .= '<div class="time">All Day</div>';
     }
-    if ($item['LocationName'] != null) {
-      $html .= '<div class="location">' . $item['LocationName'] . ' - <a href="http://maps.google.com/?q=' . $item['Latitude'] . ',' . $item['Longitude'] . '&z=18" target="_blank">View Map</a></div>';
-    }
-    if ($item['LowPrice'] == 0.0 && $item['LowPrice'] != null) {
-      $html .= '<div class="price">FREE</div>';
-    } else if ($item['LowPrice'] == null) {
-      $html .= '';
-    } else {
-      $html .= '<div class="price">$' . $item['LowPrice'];
-      if ($item['HighPrice'] != null) {
-        $html .= ' - $' . $item['HighPrice'];
-      }
-      $html .= '</div>';
-    }
+//    if ($item['LocationName'] != null) {
+////      $html .= '<div class="location">' . $item['LocationName'] . ' - <a href="http://maps.google.com/?q=' . $item['Latitude'] . ',' . $item['Longitude'] . '&z=18" target="_blank">View Map</a></div>';
+//    }
+//    if ($item['LowPrice'] == 0.0 && $item['LowPrice'] != null) {
+////      $html .= '<div class="price">FREE</div>';
+//    } else if ($item['LowPrice'] == null) {
+////      $html .= '';
+//    } else {
+////      $html .= '<div class="price">$' . $item['LowPrice'];
+//      if ($item['HighPrice'] != null) {
+////        $html .= ' - $' . $item['HighPrice'];
+//      }
+////      $html .= '</div>';
+//    }
     $item_id = uniqid();
-    if (strlen($item['Description']) <= 100) {
-      $html .= '<div class="description" data-id="' . $item_id . '">' . $item['Description'] . '<br><a href="' . $item['MoreInformationUrl'] . '">More Information</a><br><a href="http://calendar.byu.edu/iCal/Event/' . $item['EventId'] . '">Download iCal</a></div>';
-    } else {
-      $partial_description = truncate($item['Description'], 100);
-      $html .= '<div class="partial-description show" data-id="' . $item_id . '">' . $partial_description . '... <a href="#" class="see-more" data-id="' . $item_id . '">See More</a></div>';
-      $html .= '<div class="description hidden" data-id="' . $item_id . '">' . $item['Description'] . '<br><a href="' . $item['MoreInformationUrl'] . '">More Information</a><br><a href="http://calendar.byu.edu/iCal/Event/' . $item['EventId'] . '">Download iCal</a></div>';
-    }
+//    if (strlen($item['Description']) <= 100) {
+//      $html .= '<div class="description" data-id="' . $item_id . '">' . $item['Description'] . '<br><a href="' . $item['MoreInformationUrl'] . '">More Information</a><br><a href="http://calendar.byu.edu/iCal/Event/' . $item['EventId'] . '">Download iCal</a></div>';
+//    } else {
+//      $partial_description = truncate($item['Description'], 100);
+//      $html .= '<div class="partial-description show" data-id="' . $item_id . '">' . $partial_description . '... <a href="#" class="see-more" data-id="' . $item_id . '">See More</a></div>';
+//      $html .= '<div class="description hidden" data-id="' . $item_id . '">' . $item['Description'] . '<br><a href="' . $item['MoreInformationUrl'] . '">More Information</a><br><a href="http://calendar.byu.edu/iCal/Event/' . $item['EventId'] . '">Download iCal</a></div>';
+//    }
     $html .= '</div>';
     $html .= '</div>';
     }
