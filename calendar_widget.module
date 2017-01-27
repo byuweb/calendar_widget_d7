@@ -413,7 +413,7 @@ function calendar_widget_vertical_tiles_limited($jsonArr, $startDate, $endDate) 
       if ($first_item) {
         $html .= '<div class="date-wrapper"><div class="date-day-number">' . date("j", strtotime($item['StartDateTime'])) . '</div><div class="date">' . date("M, l", strtotime($item['StartDateTime'])) . '</div></div>';
         $currentTime = $new_date;
-//        $first_item = false;
+        $first_item = false;
       }
 
       $diff = $currentTime->diff($new_date);
