@@ -90,7 +90,6 @@ function calendar_widget_form($form, &$form_state) {
         '#title' => t('Run cron manually'),
     );
     $form['cron_run']['cron_reset'] = array(
-    $form['cron_run']['cron_reset'] = array(
         '#type' => 'checkbox',
         '#title' => t("Run calendar_widget's cron regardless of whether interval has expired."),
         '#default_value' => FALSE,
