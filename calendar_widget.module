@@ -328,7 +328,7 @@ function calendar_widget_list_format($jsonArr, $startDate, $endDate) {
       // set date's timezone if needed
 
       if ($first_item) {
-        $html .= '<div class="date-day-number">' . date("j", strtotime($item['StartDateTime'])) . '</div><div class="date">' . date("M, l", strtotime($item['StartDateTime'])) . '</div>';
+        $html .= '<div class="date-wrapper"><div class="date-day-number">' . date("j", strtotime($item['StartDateTime'])) . '</div><div class="date">' . date("M, l", strtotime($item['StartDateTime'])) . '</div></div>';
         $currentTime = $new_date;
         $first_item = false;
       }
