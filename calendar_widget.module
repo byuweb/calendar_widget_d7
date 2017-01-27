@@ -63,37 +63,37 @@ function calendar_widget_form($form, &$form_state) {
       '#markup' => '<div>' . t('The BYU Calendar site provides extensive options for subscribing to various categories (main categories, tags, departments, etc). You can see the full list of options at https://calendar.byu.edu/subscribe. Below are the most common category ids for your convenience.') . '</div>',
   );
   $form['info']['home'] = array(
-      '#markup' => '<div class="id-list">' . t("90 - Subscribe to all events featured on the BYU Homepage.") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("90 - Subscribe to all events featured on the BYU Homepage.") . '</div>',
   );
   $form['info']['arts'] = array(
-      '#markup' => '<div class="id-list">' . t("9 - Arts & Entertainment") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("9 - Arts & Entertainment") . '</div>',
   );
   $form['info']['athletics'] = array(
-      '#markup' => '<div class="id-list">' . t("10 - Athletics.") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("10 - Athletics.") . '</div>',
   );
   $form['info']['conferences'] = array(
-      '#markup' => '<div class="id-list">' . t("6 - Conferences") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("6 - Conferences") . '</div>',
   );
   $form['info']['devos'] = array(
-      '#markup' => '<div class="id-list">' . t("7 - Devotionals & Forums") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("7 - Devotionals & Forums") . '</div>',
   );
   $form['info']['education'] = array(
-      '#markup' => '<div class="id-list">' . t("4 - Education") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("4 - Education") . '</div>',
   );
   $form['info']['health'] = array(
-      '#markup' => '<div class="id-list">' . t("47 - Health & Wellness") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("47 - Health & Wellness") . '</div>',
   );
   $form['info']['studentlife'] = array(
-      '#markup' => '<div class="id-list">' . t("49 - Student Life") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("49 - Student Life") . '</div>',
   );
   $form['info']['other'] = array(
-      '#markup' => '<div class="id-list">' . t("52 - Other") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("52 - Other") . '</div>',
   );
   $form['info']['all'] = array(
-      '#markup' => '<div class="id-list">' . t("9,10,6,7,4,47,49,52 - Use all main category ids to subscribe to ALL events on the entire calendar.byu.edu website.") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("9,10,6,7,4,47,49,52 - Use all main category ids to subscribe to ALL events on the entire calendar.byu.edu website.") . '</div>',
   );
   $form['info']['own'] = array(
-      '#markup' => '<div class="id-list">' . t("If you would like to submit your own collection of events through the calendar.byu.edu system and have your own department or group id, contact BYU Communications at https://calendar.byu.edu/contact.") . '</div>',
+      '#markup' => '<div>' . t("If you would like to submit your own collection of events through the calendar.byu.edu system and have your own department or group id, contact BYU Communications at https://calendar.byu.edu/contact.") . '</div>',
   );
 
 
