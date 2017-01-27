@@ -55,6 +55,49 @@ function calendar_widget_form($form, &$form_state) {
   $form['info']['last'] = array(
       '#markup' => '<div>' . t('If you wish to submit your own events to the BYU Calendar, you can do so at calendar.byu.edu/node/add/event. You can request your own category id to subscribe to only your events, or yours and others.') . '</div>',
   );
+  $form['category_ids'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Most Popular Category Ids'),
+  );
+  $form['info']['intro'] = array(
+      '#markup' => '<div>' . t('The BYU Calendar site provides extensive options for subscribing to various categories (main categories, tags, departments, etc). You can see the full list of options at https://calendar.byu.edu/subscribe. Below are the most common category ids for your convenience.') . '</div>',
+  );
+  $form['info']['home'] = array(
+      '#markup' => '<div class="id-list">' . t("90 - Subscribe to all events featured on the BYU Homepage.") . '</div>',
+  );
+  $form['info']['arts'] = array(
+      '#markup' => '<div class="id-list">' . t("9 - Arts & Entertainment") . '</div>',
+  );
+  $form['info']['athletics'] = array(
+      '#markup' => '<div class="id-list">' . t("10 - Athletics.") . '</div>',
+  );
+  $form['info']['conferences'] = array(
+      '#markup' => '<div class="id-list">' . t("6 - Conferences") . '</div>',
+  );
+  $form['info']['devos'] = array(
+      '#markup' => '<div class="id-list">' . t("7 - Devotionals & Forums") . '</div>',
+  );
+  $form['info']['education'] = array(
+      '#markup' => '<div class="id-list">' . t("4 - Education") . '</div>',
+  );
+  $form['info']['health'] = array(
+      '#markup' => '<div class="id-list">' . t("47 - Health & Wellness") . '</div>',
+  );
+  $form['info']['studentlife'] = array(
+      '#markup' => '<div class="id-list">' . t("49 - Student Life") . '</div>',
+  );
+  $form['info']['other'] = array(
+      '#markup' => '<div class="id-list">' . t("52 - Other") . '</div>',
+  );
+  $form['info']['all'] = array(
+      '#markup' => '<div class="id-list">' . t("9,10,6,7,4,47,49,52 - Use all main category ids to subscribe to ALL events on the entire calendar.byu.edu website.") . '</div>',
+  );
+  $form['info']['own'] = array(
+      '#markup' => '<div class="id-list">' . t("If you would like to submit your own collection of events through the calendar.byu.edu system and have your own department or group id, contact BYU Communications at https://calendar.byu.edu/contact.") . '</div>',
+  );
+
+
+
 
   $form['calendar_widget_block_1'] = array(
       '#type' => 'fieldset',
