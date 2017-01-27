@@ -439,7 +439,7 @@ function calendar_widget_fetch_events(){
 
   $eventsData = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 
-  return $eventsData;
+  return $html;
 }
 /* test function to fetch events posted recently -- */
 function calendar_widget_contents() {
