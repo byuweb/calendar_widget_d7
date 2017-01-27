@@ -93,7 +93,7 @@ function calendar_widget_form($form, &$form_state) {
       '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("9,10,6,7,4,47,49,52 - Use all main category ids to subscribe to ALL events on the entire calendar.byu.edu website.") . '</div>',
   );
   $form['info']['own'] = array(
-      '#markup' => '<div>' . t("If you would like to submit your own collection of events through the calendar.byu.edu system and have your own department or group id, contact BYU Communications at https://calendar.byu.edu/contact.") . '</div>',
+      '#markup' => '<div>' . t("If you would like to submit your own <strong>collection of events</strong> through the calendar.byu.edu system and have your own department or group id, contact BYU Communications at https://calendar.byu.edu/contact.") . '</div>',
   );
 
 
