@@ -142,23 +142,6 @@ Below are the most common category ids for your convenience.') . '</div>',
 
 
 
-  $form['configuration'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Configuring Calendar Widget Update Frequency'),
-  );
-  $form['configuration']['calendar_widget_interval'] = array(
-      '#type' => 'select',
-      '#title' => t('Update interval'),
-      '#description' => t('Time after which calendar_widget_cron will check for updates on the next cron run.'),
-      '#default_value' => variable_get('calendar_widget_interval', 60 * 60),
-      '#options' => array(
-          60 => t('1 minute'),
-          300 => t('5 minutes'),
-          3600 => t('1 hour'),
-          60 * 60 * 24 => t('1 day'),
-      ),
-  );
-
   return system_settings_form($form);
 
 }
