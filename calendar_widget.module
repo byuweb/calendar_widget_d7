@@ -365,7 +365,7 @@ function calendar_widget_fetch_events(){
   // convert to Y-m-d format
 
   // get categories
-  $categoriesString = variable_get('calendar_widget_categories', 90);
+  $categoriesString = variable_get('calendar_widget_categories', '90');
 
   $categories = str_replace(",", "+", $categoriesString);
   $categories = str_replace(" ", "", $categories);
