@@ -330,13 +330,16 @@ function calendar_widget_fetch_events(){
   $startTime = time();
   //Get today's date
   $startDateOb = date_create("@$startTime");
+  date_timezone_set($startDateOb, timezone_open('America/Denver'));
   $startDate = date_format($startDateOb, 'Y-m-d');
+
 
   //Calculate the date a week ago.
   //$end_time = mktime(0, 0, 0, $today['mon'], ($today['mday'] + $days), $today['year']);
   // have to minus days because it includes today plus $days-1 to equal total $days
   $endTime = $startTime + (($days-1) * 24 * 3600);
   $endDateOb = date_create_from_format('U', $endTime);
+  date_timezone_set($endDateOb, timezone_open('America/Denver'));
   $endDate = date_format($endDateOb, 'Y-m-d');
 
   // convert to Y-m-d format
