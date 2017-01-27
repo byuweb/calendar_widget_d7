@@ -64,34 +64,34 @@ function calendar_widget_form($form, &$form_state) {
 Below are the most common category ids for your convenience.') . '</div>',
   );
   $form['category_ids']['home'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("90 - Subscribe to all events featured on the BYU Homepage.") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>90:</strong> Subscribe to all events featured on the BYU Homepage.") . '</div>',
   );
   $form['category_ids']['arts'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("9 - Arts & Entertainment") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>9:</strong> Arts & Entertainment") . '</div>',
   );
   $form['category_ids']['athletics'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("10 - Athletics.") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>10:</strong> Athletics.") . '</div>',
   );
   $form['category_ids']['conferences'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("6 - Conferences") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>6:</strong> Conferences") . '</div>',
   );
   $form['category_ids']['devos'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("7 - Devotionals & Forums") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>7:</strong> Devotionals & Forums") . '</div>',
   );
   $form['category_ids']['education'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("4 - Education") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>4:</strong> Education") . '</div>',
   );
   $form['category_ids']['health'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("47 - Health & Wellness") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>47:</strong> Health & Wellness") . '</div>',
   );
   $form['category_ids']['studentlife'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("49 - Student Life") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>49:</strong> Student Life") . '</div>',
   );
   $form['category_ids']['other'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("52 - Other") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>52:</strong> Other") . '</div>',
   );
   $form['category_ids']['all'] = array(
-      '#markup' => '<div class="id-list" style="margin-left: 15px;">' . t("9,10,6,7,4,47,49,52 - Use all main category ids to subscribe to ALL events on the entire calendar.byu.edu website.") . '</div>',
+      '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>9,10,6,7,4,47,49,52:</strong> Use all main category ids to subscribe to ALL events on the entire calendar.byu.edu website.") . '</div>',
   );
   $form['category_ids']['own'] = array(
       '#markup' => '<div>' . t('If you would like to submit your own <strong>collection of events</strong> through the calendar.byu.edu system and have your own department or group id, contact BYU Communications at <a href="https://calendar.byu.edu/contact" target="_blank">https://calendar.byu.edu/contact</a>.') . '</div>',
