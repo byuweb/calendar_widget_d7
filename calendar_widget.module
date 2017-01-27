@@ -171,7 +171,7 @@ function calendar_widget_form($form, &$form_state) {
 function calendar_widget_block_info() {
   $blocks['calendar_widget_block_1'] = array(
     // The name that will appear in the block list.
-      'info' => t('Calendar Widget Block 1'),
+      'info' => t('Calendar Events'),
     // Default setting.
       'cache' => DRUPAL_CACHE_PER_ROLE,
   );
