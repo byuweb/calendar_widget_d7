@@ -353,7 +353,7 @@ function calendar_widget_list_format($jsonArr, $startDate, $endDate) {
         }
         $html .= ' MT </div>';
       } else {
-        $html .= '<div class="event-time">All Day</div>';
+        $html .= '<div class="event-time">All Day ' . $item['AllDay'] . '</div>';
       }
 //    if ($item['LocationName'] != null) {
 ////      $html .= '<div class="location">' . $item['LocationName'] . ' - <a href="http://maps.google.com/?q=' . $item['Latitude'] . ',' . $item['Longitude'] . '&z=18" target="_blank">View Map</a></div>';
