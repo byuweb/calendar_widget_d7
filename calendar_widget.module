@@ -346,8 +346,8 @@ function calendar_widget_list_format($jsonArr, $startDate, $endDate) {
       $html .= '<div class="event-content">';
       $html .= '<div class="event-title"><a href="' . $item['FullUrl'] . ' " target="_blank"><div class="title">' . $item['Title'] . '</div></a></div>';
 
-      if ($item['AllDay'] == false) {
-        $html .= '<div class="event-time">' . date("g:i A", strtotime($item['StartDateTime']));
+      if ($item['AllDay'] == 'false') {
+        $html .= '<div class="event-time">'  . $item['AllDay'] . date("g:i A", strtotime($item['StartDateTime']));
         if ($item['EndDateTime'] != null) {
           $html .= ' - ' . date("g:i A", strtotime($item['EndDateTime']));
         }
