@@ -104,6 +104,8 @@
 .event-time {
     min-width: 60px;
     margin-left: 12px;
+    color: #767676;
+    font-size: 14px;
 }
 
 
