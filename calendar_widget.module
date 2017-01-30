@@ -351,7 +351,8 @@ function calendar_widget_list_format($jsonArr, $startDate, $endDate) {
         if ($item['EndDateTime'] != null) {
 //          $html .= ' - ' . date("g:i A", strtotime($item['EndDateTime']));
         }
-        $html .= ' MT </div>';
+//        $html .= ' MT';
+        $html .= '</div>';
       } else {
         $html .= '<div class="event-time">All Day</div>';
       }
