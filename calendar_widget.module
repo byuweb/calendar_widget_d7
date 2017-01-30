@@ -313,7 +313,7 @@ function calendar_widget_list_format($jsonArr, $startDate, $endDate) {
     $html = "<h3>No events.</h3>";
   } else {
 
-    $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . '">';
+    $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . ' calendar-widget-block display-list">';
 //    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 //
   $currentTime = new DateTime();
@@ -336,7 +336,7 @@ function calendar_widget_list_format($jsonArr, $startDate, $endDate) {
       $diff = $currentTime->diff($new_date);
 
       if ($diff->format('%a') !== '0') {
-        $html .= '<h3><div class="date">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div></h3>';
+        $html .= '<h3><div class="date-text">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div></h3>';
         $currentTime = $new_date;
       }
 
@@ -344,16 +344,16 @@ function calendar_widget_list_format($jsonArr, $startDate, $endDate) {
 
 //    $html .= '<img src="' . $item['ImgUrl'] . '">';
       $html .= '<div class="event-content">';
-      $html .= '<a href="' . $item['FullUrl'] . ' " target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
+      $html .= '<div class="event-title"><a href="' . $item['FullUrl'] . ' " target="_blank"><div class="title">' . $item['Title'] . '</div></a></div>';
 
       if ($item['AllDay'] == false) {
-        $html .= '<div class="time">' . date("g:i A", strtotime($item['StartDateTime']));
+        $html .= '<div class="event-time">' . date("g:i A", strtotime($item['StartDateTime']));
         if ($item['EndDateTime'] != null) {
           $html .= ' - ' . date("g:i A", strtotime($item['EndDateTime']));
         }
         $html .= ' MT </div>';
       } else {
-        $html .= '<div class="time">All Day</div>';
+        $html .= '<div class="event-time">All Day</div>';
       }
 //    if ($item['LocationName'] != null) {
 ////      $html .= '<div class="location">' . $item['LocationName'] . ' - <a href="http://maps.google.com/?q=' . $item['Latitude'] . ',' . $item['Longitude'] . '&z=18" target="_blank">View Map</a></div>';
