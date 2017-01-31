@@ -111,24 +111,24 @@ Below are the most common category ids for your convenience.') . '</div>',
       '#type' => 'fieldset',
       '#title' => t('Configuring Calendar Widget Block 1'),
   );
-  $form['calendar_widget_block_1']['calendar_widget_dates_options'] = array(
-      '#type' => 'select',
-      '#title' => t('Number of Days'),
-      '#description' => t('How many days, including today, the calendar block will go forward.'),
-      '#default_value' => variable_get('calendar_widget_dates_options', 7),
-      '#options' => array(
-          1 => t('1 day (today only)'),
-          7 => t('7 days'),
-          10 => t('10 days'),
-          14 => t('14 days'),
-          30 => t('30 days'),
-      ),
-  );
-  $form['calendar_widget_block_1']['calendar_widget_dates'] = array(
+//  $form['calendar_widget_block_1']['calendar_widget_dates_options'] = array(
+//      '#type' => 'select',
+//      '#title' => t('Number of Days'),
+//      '#description' => t('How many days, including today, the calendar block will go forward.'),
+//      '#default_value' => variable_get('calendar_widget_dates_options', 7),
+//      '#options' => array(
+//          1 => t('1 day (today only)'),
+//          7 => t('7 days'),
+//          10 => t('10 days'),
+//          14 => t('14 days'),
+//          30 => t('30 days'),
+//      ),
+//  );
+  $form['calendar_widget_block_1']['calendar_widget_dates_1'] = array(
       '#type' => 'textfield',
       '#title' => t('Number of Days'),
       '#description' => t('How many days, including today, the calendar block will go forward.'),
-      '#default_value' => variable_get('calendar_widget_dates', '7'),
+      '#default_value' => variable_get('calendar_widget_dates_1', '7'),
       '#size' => 10,
       '#maxlength' =>3,
       '#required' => TRUE,
@@ -142,11 +142,11 @@ Below are the most common category ids for your convenience.') . '</div>',
       '#maxlength' =>60,
       '#required' => TRUE,
   );
-  $form['calendar_widget_block_1']['calendar_widget_display_type'] = array(
+  $form['calendar_widget_block_1']['calendar_widget_display_type_1'] = array(
       '#type' => 'select',
       '#title' => t('Display Type'),
       '#description' => t('There are several display types available for this calendar block. To preview these display types see  [[ link here ]] . The tile formats require the BYU Component calendar tile. Read more at [[ link ]].'),
-      '#default_value' => variable_get('calendar_widget_dates', 7),
+      '#default_value' => variable_get('calendar_widget_display_type_1', 1),
       '#options' => array(
           1 => t('Simple List (grouped by date)'),
           2 => t('Vertical tiles (limited to the first 3 events)'),
@@ -238,7 +238,8 @@ function calendar_widget_block_info() {
 /* -- custom fxn to fetch calendar events and return data for a block -- */
 function calendar_widget_fetch_events($blockNum){
   // pull how many days forward to go
-  $days = variable_get('calendar_widget_dates', 7);
+  $daysField = 'calendar_widget_categories_' . $blockNum;
+  $days = variable_get($daysField, 7);
   // today's time
   $startTime = time();
   //Get today's date
@@ -258,8 +259,8 @@ function calendar_widget_fetch_events($blockNum){
   // convert to Y-m-d format
 
   // get categories
-  $categoryfield = 'calendar_widget_categories_' . $blockNum;
-  $categoriesString = variable_get($categoryfield, '90');
+  $categoryField = 'calendar_widget_categories_' . $blockNum;
+  $categoriesString = variable_get($categoryField, '90');
 
   $categories = str_replace(",", "+", $categoriesString);
   $categories = str_replace(" ", "", $categories);
@@ -281,7 +282,8 @@ function calendar_widget_fetch_events($blockNum){
 
   $jsonArr = json_decode($result, true);
   // depending on block formatting type, process the right formatting/structure:
-  $displayType = variable_get('calendar_widget_display_type', 1);
+  $displayTypeField = 'calendar_widget_display_type_' . $blockNum;
+  $displayType = variable_get($displayTypeField, 1);
 
   switch ($displayType) {
     case 1:  // list type, grouped by date
@@ -567,20 +569,7 @@ function calendar_widget_block_view($delta = '') {
 //        $result = calendar_widget_contents();
         $result = calendar_widget_fetch_events(1);
         // Array to contain items for the block to render.
-        $items = array();
-        // Iterate over the result set and format as links.
-//        foreach ($result as $event) {
-//          $block_body .=
-//        }
-
-
-
-//        foreach ($result as $node) {
-//          $items[] = array(
-//              'data' => l($node->title, 'node/' . $node->nid),
-//          );
-//        }
-//        $block['content'] = t('There are probably events.');
+        //$items = array();
 
         // return back to the block
         // No data returned for the block / no events.
