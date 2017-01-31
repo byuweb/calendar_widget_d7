@@ -28,8 +28,8 @@ function calendar_widget_menu() {
 //      'page callback' => 'calendar_widget_overview_page',
       'page callback' => 'drupal_get_form',
       'page arguments' => array('calendar_widget_form'),
-      'access callback' => TRUE,
-
+//      'access callback' => TRUE,
+      'access arguments' => array('administer Calendar Widget settings'),
   );
   return $items;
 }
