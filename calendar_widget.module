@@ -29,12 +29,20 @@ function calendar_widget_menu() {
       'page callback' => 'drupal_get_form',
       'page arguments' => array('calendar_widget_form'),
 //      'access callback' => TRUE,
-      'access arguments' => array('administer Calendar Widget settings'),
+      'access arguments' => array('Administer Calendar Widget settings'),
   );
   return $items;
 }
 
-
+// Create permissions
+function calendar_widget_permission() {
+  return array(
+      'Administer Calendar Widget settings' => array(
+          'title' => t('Administer Calendar Widget settings'),
+          'description' => t('Allow users to change Calendar Widget settings.'),
+      ),
+  );
+}
 
 function calendar_widget_form($form, &$form_state) {
 
