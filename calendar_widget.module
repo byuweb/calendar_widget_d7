@@ -133,11 +133,11 @@ Below are the most common category ids for your convenience.') . '</div>',
       '#maxlength' =>3,
       '#required' => TRUE,
   );
-  $form['calendar_widget_block_1']['calendar_widget_categories'] = array(
+  $form['calendar_widget_block_1']['calendar_widget_categories_1'] = array(
       '#type' => 'textfield',
       '#title' => t('Categories'),
       '#description' => t('The category ids for the categories you want to show events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. See the categories section above for options. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
-      '#default_value' => variable_get('calendar_widget_categories', '90'),
+      '#default_value' => variable_get('calendar_widget_categories_1', '90'),
       '#size' => 60,
       '#maxlength' =>60,
       '#required' => TRUE,
@@ -157,54 +157,54 @@ Below are the most common category ids for your convenience.') . '</div>',
   );
 
   // block 2
-  $form['calendar_widget_block_2'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Configuring Calendar Widget Block 2'),
-  );
-  $form['calendar_widget_block_2']['calendar_widget_dates_options'] = array(
-      '#type' => 'select',
-      '#title' => t('Number of Days'),
-      '#description' => t('How many days, including today, the calendar block will go forward.'),
-      '#default_value' => variable_get('calendar_widget_dates_options', 7),
-      '#options' => array(
-          1 => t('1 day (today only)'),
-          7 => t('7 days'),
-          10 => t('10 days'),
-          14 => t('14 days'),
-          30 => t('30 days'),
-      ),
-  );
-  $form['calendar_widget_block_2']['calendar_widget_dates'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Number of Days'),
-      '#description' => t('How many days, including today, the calendar block will go forward.'),
-      '#default_value' => variable_get('calendar_widget_dates', ''),
-      '#size' => 10,
-      '#maxlength' =>3,
-      '#required' => TRUE,
-  );
-  $form['calendar_widget_block_2']['calendar_widget_categories'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Categories'),
-      '#description' => t('The category ids for the categories you want to show events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. See the categories section above for options. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
-      '#default_value' => variable_get('calendar_widget_categories', '90'),
-      '#size' => 60,
-      '#maxlength' =>60,
-      '#required' => TRUE,
-  );
-  $form['calendar_widget_block_2']['calendar_widget_display_type'] = array(
-      '#type' => 'select',
-      '#title' => t('Display Type'),
-      '#description' => t('There are several display types available for this calendar block. To preview these display types see  [[ link here ]] . The tile formats require the BYU Component calendar tile. Read more at [[ link ]].'),
-      '#default_value' => variable_get('calendar_widget_dates', 7),
-      '#options' => array(
-          1 => t('Simple List (grouped by date)'),
-          2 => t('Vertical tiles (limited to the first 3 events)'),
-          3 => t('Horizontal tiles (limited to the first 3 events)'),
-          4 => t('Vertical tile slider (displaying 3 at a time)'),
-          5 => t('Horizontal tile slider (displaying 3 at a time)'),
-      ),
-  );
+//  $form['calendar_widget_block_2'] = array(
+//      '#type' => 'fieldset',
+//      '#title' => t('Configuring Calendar Widget Block 2'),
+//  );
+//  $form['calendar_widget_block_2']['calendar_widget_dates_options'] = array(
+//      '#type' => 'select',
+//      '#title' => t('Number of Days'),
+//      '#description' => t('How many days, including today, the calendar block will go forward.'),
+//      '#default_value' => variable_get('calendar_widget_dates_options', 7),
+//      '#options' => array(
+//          1 => t('1 day (today only)'),
+//          7 => t('7 days'),
+//          10 => t('10 days'),
+//          14 => t('14 days'),
+//          30 => t('30 days'),
+//      ),
+//  );
+//  $form['calendar_widget_block_2']['calendar_widget_dates'] = array(
+//      '#type' => 'textfield',
+//      '#title' => t('Number of Days'),
+//      '#description' => t('How many days, including today, the calendar block will go forward.'),
+//      '#default_value' => variable_get('calendar_widget_dates', ''),
+//      '#size' => 10,
+//      '#maxlength' =>3,
+//      '#required' => TRUE,
+//  );
+//  $form['calendar_widget_block_2']['calendar_widget_categories'] = array(
+//      '#type' => 'textfield',
+//      '#title' => t('Categories'),
+//      '#description' => t('The category ids for the categories you want to show events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. See the categories section above for options. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
+//      '#default_value' => variable_get('calendar_widget_categories', '90'),
+//      '#size' => 60,
+//      '#maxlength' =>60,
+//      '#required' => TRUE,
+//  );
+//  $form['calendar_widget_block_2']['calendar_widget_display_type'] = array(
+//      '#type' => 'select',
+//      '#title' => t('Display Type'),
+//      '#description' => t('There are several display types available for this calendar block. To preview these display types see  [[ link here ]] . The tile formats require the BYU Component calendar tile. Read more at [[ link ]].'),
+//      '#default_value' => variable_get('calendar_widget_dates', 7),
+//      '#options' => array(
+//          1 => t('Simple List (grouped by date)'),
+//          2 => t('Vertical tiles (limited to the first 3 events)'),
+//          3 => t('Horizontal tiles (limited to the first 3 events)'),
+//          4 => t('Vertical tile slider (displaying 3 at a time)'),
+//          5 => t('Horizontal tile slider (displaying 3 at a time)'),
+//      ),
+//  );
 
   // block 3
 
@@ -236,7 +236,7 @@ function calendar_widget_block_info() {
 }
 
 /* -- custom fxn to fetch calendar events and return data for a block -- */
-function calendar_widget_fetch_events(){
+function calendar_widget_fetch_events($blockNum){
   // pull how many days forward to go
   $days = variable_get('calendar_widget_dates', 7);
   // today's time
@@ -258,7 +258,8 @@ function calendar_widget_fetch_events(){
   // convert to Y-m-d format
 
   // get categories
-  $categoriesString = variable_get('calendar_widget_categories', '90');
+  $categoryfield = 'calendar_widget_categories_' . $blockNum;
+  $categoriesString = variable_get($categoryfield, '90');
 
   $categories = str_replace(",", "+", $categoriesString);
   $categories = str_replace(" ", "", $categories);
@@ -564,7 +565,7 @@ function calendar_widget_block_view($delta = '') {
         // Retrieve and process data here.
         // Use our custom function to retrieve data.
 //        $result = calendar_widget_contents();
-        $result = calendar_widget_fetch_events();
+        $result = calendar_widget_fetch_events(1);
         // Array to contain items for the block to render.
         $items = array();
         // Iterate over the result set and format as links.
