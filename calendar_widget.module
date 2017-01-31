@@ -105,6 +105,28 @@ Below are the most common category ids for your convenience.') . '</div>',
       '#markup' => '<div>' . t('<br>If you would like to submit your own <strong>collection of events</strong> through the calendar.byu.edu system and have your own department or group id, contact BYU Communications at <a href="https://calendar.byu.edu/contact" target="_blank">https://calendar.byu.edu/contact</a>.') . '</div>',
   );
 
+  // number of blocks settings
+  $form['calendar_widget_blocks'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Configuring Calendar Widget Block 1'),
+  );
+  $form['calendar_widget_blocks']['calendar_widget_blocks_number'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Number of Blocks'),
+          '#size' => 5,
+          '#maxlength' => 12,
+          '#number_type' => 'decimal',
+          '#field_name' => 'calendar_widget_blocks_number',
+          '#element_validate' => array ('number_field_widget_validate'),
+  );
+
+
+
+
+
+
+
+
 
 // block 1
   $form['calendar_widget_block_1'] = array(
@@ -213,6 +235,9 @@ Below are the most common category ids for your convenience.') . '</div>',
 
 }
 
+function calendar_widget_blocks_number_validate(){
+
+}
 
 /**
  * Implements hook_block_info().
@@ -560,6 +585,8 @@ function calendar_widget_contents() {
 */
 
 function calendar_widget_block_view($delta = '') {
+
+
   switch ($delta) {
     case 'calendar_widget_block_1':
       $block['subject'] = t('Calendar Widget Text');
@@ -587,6 +614,9 @@ function calendar_widget_block_view($delta = '') {
           }
         }
         return $block;
+    case 'calendar_widget_block_1':
+
+
   }
 
 }
