@@ -268,7 +268,7 @@ function calendar_widget_block_info() {
       'cache' => DRUPAL_CACHE_PER_ROLE,
   );
 
-  $blocks = calendar_widget_print_block_info($blocks);
+  //$blocks = calendar_widget_print_block_info($blocks);
 
   return $blocks;
 }
@@ -663,7 +663,6 @@ function calendar_widget_block_view($delta = '') {
           }
         }
         return $block;
-    case 'calendar_widget_block_1':
 
 
   }
