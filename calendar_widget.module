@@ -113,16 +113,13 @@ Below are the most common category ids for your convenience.') . '</div>',
   $form['calendar_widget_blocks']['calendar_widget_blocks_number'] = array(
           '#type' => 'textfield',
           '#title' => t('Number of Blocks'),
+          '#description' => t('Make sure, if you have existing blocks, that you do not enter a number FEWER than the number of existing blocks. Doing so would result in losing one or more blocks.'),
           '#size' => 5,
           '#maxlength' => 12,
           '#number_type' => 'decimal',
           '#field_name' => 'calendar_widget_blocks_number',
           '#element_validate' => array ('number_field_widget_validate'),
   );
-
-
-
-
 
 
 
@@ -178,61 +175,73 @@ Below are the most common category ids for your convenience.') . '</div>',
       ),
   );
 
-  // block 2
-//  $form['calendar_widget_block_2'] = array(
-//      '#type' => 'fieldset',
-//      '#title' => t('Configuring Calendar Widget Block 2'),
-//  );
-//  $form['calendar_widget_block_2']['calendar_widget_dates_options'] = array(
-//      '#type' => 'select',
-//      '#title' => t('Number of Days'),
-//      '#description' => t('How many days, including today, the calendar block will go forward.'),
-//      '#default_value' => variable_get('calendar_widget_dates_options', 7),
-//      '#options' => array(
-//          1 => t('1 day (today only)'),
-//          7 => t('7 days'),
-//          10 => t('10 days'),
-//          14 => t('14 days'),
-//          30 => t('30 days'),
-//      ),
-//  );
-//  $form['calendar_widget_block_2']['calendar_widget_dates'] = array(
-//      '#type' => 'textfield',
-//      '#title' => t('Number of Days'),
-//      '#description' => t('How many days, including today, the calendar block will go forward.'),
-//      '#default_value' => variable_get('calendar_widget_dates', ''),
-//      '#size' => 10,
-//      '#maxlength' =>3,
-//      '#required' => TRUE,
-//  );
-//  $form['calendar_widget_block_2']['calendar_widget_categories'] = array(
-//      '#type' => 'textfield',
-//      '#title' => t('Categories'),
-//      '#description' => t('The category ids for the categories you want to show events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. See the categories section above for options. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
-//      '#default_value' => variable_get('calendar_widget_categories', '90'),
-//      '#size' => 60,
-//      '#maxlength' =>60,
-//      '#required' => TRUE,
-//  );
-//  $form['calendar_widget_block_2']['calendar_widget_display_type'] = array(
-//      '#type' => 'select',
-//      '#title' => t('Display Type'),
-//      '#description' => t('There are several display types available for this calendar block. To preview these display types see  [[ link here ]] . The tile formats require the BYU Component calendar tile. Read more at [[ link ]].'),
-//      '#default_value' => variable_get('calendar_widget_dates', 7),
-//      '#options' => array(
-//          1 => t('Simple List (grouped by date)'),
-//          2 => t('Vertical tiles (limited to the first 3 events)'),
-//          3 => t('Horizontal tiles (limited to the first 3 events)'),
-//          4 => t('Vertical tile slider (displaying 3 at a time)'),
-//          5 => t('Horizontal tile slider (displaying 3 at a time)'),
-//      ),
-//  );
 
-  // block 3
+  // print out settings for however many blocks there are
+  print calendar_widget_print_blocks_settings();
+
 
 
   return system_settings_form($form);
 
+}
+
+function calendar_widget_print_blocks_settings($numberofBlocks) {
+  $blockSettings = '';
+  for($i = 2; $i <= $numberofBlocks; $i++) {
+    $blockSettings .= "$form['calendar_widget_block_" .$i . "'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Configuring Calendar Widget Block " . $i . "'),
+      );
+        $form['calendar_widget_block_" . $i . "']['calendar_widget_dates_" . $i . "'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Number of Days'),
+            '#description' => t('How many days, including today, the calendar block will go forward.'),
+            '#default_value' => variable_get('calendar_widget_dates_" .  $i . "1', '7'),
+            '#size' => 10,
+            '#maxlength' =>3,
+            '#required' => TRUE,
+        );
+        $form['calendar_widget_block_" . $i . "']['calendar_widget_categories_" . $i . "'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Categories'),
+            '#description' => t('The category ids for the categories you want to show events for. You can see the list of categories and find out their ids by visiting calendar.byu.edu/subscribe. See the categories section above for options. For multiple categories, separate your ids with a comma or a plus sign. i.e. 10,4 or 10+4.'),
+            '#default_value' => variable_get('calendar_widget_categories_1', '90'),
+            '#size' => 60,
+            '#maxlength' =>60,
+            '#required' => TRUE,
+        );
+        $form['calendar_widget_block_" . $i . "']['calendar_widget_display_type_1'] = array(
+            '#type' => 'select',
+            '#title' => t('Display Type'),
+            '#description' => t('There are several display types available for this calendar block. To preview these display types see  [[ link here ]] . The tile formats require the BYU Component calendar tile. Read more at [[ link ]].'),
+            '#default_value' => variable_get('calendar_widget_display_type_1', 1),
+            '#options' => array(
+                1 => t('Simple List (grouped by date)'),
+                2 => t('Vertical tiles (limited to the first 3 events)'),
+                3 => t('Horizontal tiles (limited to the first 3 events)'),
+                4 => t('Vertical tile slider (displaying 3 at a time)'),
+                5 => t('Horizontal tile slider (displaying 3 at a time)'),
+            ),
+        );";
+
+  }
+  return $blockSettings;
+}
+
+function calendar_widget_print_block_info($blocksArray) {
+  // go find out how many blocks there should be
+
+  $numberofBlocks = variable_get('calendar_widget_blocks_number', 1);
+  for ($i = 2; $i <= $numberofBlocks; $i++) {
+    $blockName = 'calendar_widget_block_' . $i;
+    $blocks[$blockName] = array(
+      // The name that will appear in the block list.
+        'info' => t('Calendar Events'),
+      // Default setting.
+        'cache' => DRUPAL_CACHE_PER_ROLE,
+    );
+  }
+  return $blocks;
 }
 
 function calendar_widget_blocks_number_validate(){
@@ -251,12 +260,9 @@ function calendar_widget_block_info() {
     // Default setting.
       'cache' => DRUPAL_CACHE_PER_ROLE,
   );
-  $blocks['calendar_widget_block_2'] = array(
-    // The name that will appear in the block list.
-      'info' => t('Calendar Widget Block 2'),
-    // Default setting.
-      'cache' => DRUPAL_CACHE_PER_ROLE,
-  );
+
+  $blocks = calendar_widget_print_block_info($blocks);
+
   return $blocks;
 }
 
