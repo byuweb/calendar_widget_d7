@@ -131,6 +131,8 @@ Below are the most common category ids for your convenience.') . '</div>',
   $form['calendar_widget_block_1'] = array(
       '#type' => 'fieldset',
       '#title' => t('Configuring Calendar Widget Block 1'),
+      '#collapsible' => TRUE, // Added
+      '#collapsed' => TRUE,  // Added
   );
 //  $form['calendar_widget_block_1']['calendar_widget_dates_options'] = array(
 //      '#type' => 'select',
