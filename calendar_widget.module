@@ -247,7 +247,7 @@ $i = 2;
     $blockTitle = 'Calendar Events Block ' . $i;
     $blocks['calendar_widget_block_2'] = array(
       // The name that will appear in the block list.
-        'info' => t($blockTitle),
+        'info' => t($blockTitle . ':' . $blockName),
       // Default setting.
         'cache' => DRUPAL_CACHE_PER_ROLE,
     );
