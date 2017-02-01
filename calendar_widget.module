@@ -114,13 +114,13 @@ Below are the most common category ids for your convenience.') . '</div>',
           '#type' => 'textfield',
           '#title' => t('Number of Blocks'),
           '#description' => t('Make sure, if you have existing blocks, that you do not enter a number FEWER than the number of existing blocks. Doing so would result in losing one or more blocks.'),
-          '#default_value' => variable_get('calendar_widget_blocks_number', '1'),    
+          '#default_value' => variable_get('calendar_widget_blocks_number', '1'),
           '#size' => 5,
           '#maxlength' => 12,
           '#number_type' => 'integer',
           '#field_name' => 'calendar_widget_blocks_number',
-          '#element_validate' => array ('number_field_widget_validate'),
-//          '#element_validate' => array ('calendar_widget_blocks_number_validate'),
+//          '#element_validate' => array ('number_field_widget_validate'),
+          '#element_validate' => array ('calendar_widget_blocks_number_validate'),
   );
 
 
