@@ -108,7 +108,7 @@ Below are the most common category ids for your convenience.') . '</div>',
   // number of blocks settings
   $form['calendar_widget_blocks'] = array(
       '#type' => 'fieldset',
-      '#title' => t('Configuring Calendar Widget Block 1'),
+      '#title' => t('Number of Blocks for this Site'),
   );
   $form['calendar_widget_blocks']['calendar_widget_blocks_number'] = array(
           '#type' => 'textfield',
@@ -118,7 +118,8 @@ Below are the most common category ids for your convenience.') . '</div>',
           '#maxlength' => 12,
           '#number_type' => 'decimal',
           '#field_name' => 'calendar_widget_blocks_number',
-          '#element_validate' => array ('number_field_widget_validate'),
+//          '#element_validate' => array ('number_field_widget_validate'),
+          '#element_validate' => array ('calendar_widget_blocks_number_validate'),
   );
 
 
