@@ -290,7 +290,7 @@ function calendar_widget_blocks_number_validate(){
 function calendar_widget_block_info() {
   $blocks['calendar_widget_block_1'] = array(
     // The name that will appear in the block list.
-      'info' => t('Calendar Widget Block 1'),
+      'info' => t('Calendar Widget: Block 1'),
     // Default setting.
       'cache' => DRUPAL_CACHE_PER_ROLE,
   );
@@ -663,8 +663,8 @@ function calendar_widget_contents() {
 function calendar_widget_block_view($delta = '') {
 
 
-  switch ($delta) {
-    case 'calendar_widget_block_1':
+//  switch ($delta) {
+//    case 'calendar_widget_block_1':
       $block['subject'] = t('Calendar Widget Text');
       if (user_access('access content')) {
         // Retrieve and process data here.
@@ -692,6 +692,6 @@ function calendar_widget_block_view($delta = '') {
         return $block;
 
 
-  }
+//  }
 
 }
