@@ -119,8 +119,8 @@ Below are the most common category ids for your convenience.') . '</div>',
           '#maxlength' => 12,
           '#number_type' => 'integer',
           '#field_name' => 'calendar_widget_blocks_number',
-//          '#element_validate' => array ('number_field_widget_validate'),
-          '#element_validate' => array ('calendar_widget_blocks_number_validate'),
+          '#element_validate' => array ('number_field_widget_validate'),  // only issue is this does allow 0. but we'll still have 1 show anyway..
+//          '#element_validate' => array ('calendar_widget_blocks_number_validate'),
   );
 
 
@@ -229,15 +229,16 @@ function calendar_widget_print_blocks_settings($numberofBlocks) {
   return $blockSettings;
 }
 
-function calendar_widget_print_block_info($blocksArray) {
+function calendar_widget_print_block_info($blocks) {
   // go find out how many blocks there should be
 
   $numberofBlocks = variable_get('calendar_widget_blocks_number', 1);
   for ($i = 2; $i <= $numberofBlocks; $i++) {
     $blockName = 'calendar_widget_block_' . $i;
+    $blockTitle = 'Calendar Events Block ' . $i;
     $blocks[$blockName] = array(
       // The name that will appear in the block list.
-        'info' => t('Calendar Events'),
+        'info' => t($blockTitle),
       // Default setting.
         'cache' => DRUPAL_CACHE_PER_ROLE,
     );
@@ -248,12 +249,12 @@ function calendar_widget_print_block_info($blocksArray) {
 function calendar_widget_blocks_number_validate(){
  // make sure it is 1 or higher,
   // im guessing this function is supposed to return true or false.. i just don't know if it has something available, if it passes the variable in or anything..
-  $numberofBlocks = variable_get('calendar_widget_blocks_number', 1);
-  if($numberofBlocks >= 1){
-    return true;
-  } else {
-    return false;
-  }
+//  $numberofBlocks = variable_get('calendar_widget_blocks_number', 1);
+//  if($numberofBlocks >= 1){
+//    return true;
+//  } else {
+//    return false;
+//  }
 }
 
 /**
@@ -264,12 +265,12 @@ function calendar_widget_blocks_number_validate(){
 function calendar_widget_block_info() {
   $blocks['calendar_widget_block_1'] = array(
     // The name that will appear in the block list.
-      'info' => t('Calendar Events'),
+      'info' => t('Calendar Widget Block 1'),
     // Default setting.
       'cache' => DRUPAL_CACHE_PER_ROLE,
   );
 
-  //$blocks = calendar_widget_print_block_info($blocks);
+  $blocks = calendar_widget_print_block_info($blocks);
 
   return $blocks;
 }
