@@ -223,8 +223,7 @@ function calendar_widget_print_blocks_settings($numberofBlocks) {
 //                5 => t('Horizontal tile slider (displaying 3 at a time)'),
 //            ),
 //        );";
-
-  }
+//  }
   return $blockSettings;
 }
 
