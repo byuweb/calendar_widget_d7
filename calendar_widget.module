@@ -240,9 +240,9 @@ function calendar_widget_print_block_info($blocks) {
 //    // Default setting.
 //      'cache' => DRUPAL_CACHE_PER_ROLE,
 //  );
-$i = 2;
+//$i = 2;
 
-//  for ($i = 2; $i <= $numberofBlocks; $i++) {
+  for ($i = 2; $i <= $numberofBlocks; $i++) {
     $blockName = 'calendar_widget_block_' . $i;
     $blockTitle = 'Calendar Events Block ' . $i;
     $blocks[$blockName] = array(
@@ -251,7 +251,7 @@ $i = 2;
       // Default setting.
         'cache' => DRUPAL_CACHE_PER_ROLE,
     );
-//  }
+  }
   return $blocks;
 }
 
