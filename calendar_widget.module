@@ -573,7 +573,7 @@ function calendar_widget_hoizontal_tiles_limited($jsonArr, $startDate, $endDate)
 *  4. Vertical Tiles Slider format shows 3 vertical tiles, scrolling through a slider
  *  * It takes the array of json, the startDate and the endDate
  */
-function calendar_widget_vertical_tiles_limited($jsonArr, $startDate, $endDate) {
+function calendar_widget_vertical_tiles_slider($jsonArr, $startDate, $endDate) {
 
   if (empty($jsonArr)) {
     // list is empty.
