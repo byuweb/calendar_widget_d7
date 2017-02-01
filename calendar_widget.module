@@ -112,10 +112,10 @@ Below are the most common category ids for your convenience.') . '</div>',
   );
   $form['calendar_widget_blocks']['calendar_widget_blocks_number'] = array(
           '#type' => 'textfield',
-          '#title' => t('Number of Blocks'),
+          '#title' => t('Number of Calendar Widget Blocks Created'),
           '#description' => t('Make sure, if you have existing blocks, that you do not enter a number FEWER than the number of existing blocks. Doing so would result in losing one or more blocks.'),
           '#default_value' => variable_get('calendar_widget_blocks_number', '1'),
-          '#size' => 5,
+          '#size' => 2,
           '#maxlength' => 12,
           '#number_type' => 'integer',
           '#field_name' => 'calendar_widget_blocks_number',
@@ -132,7 +132,7 @@ Below are the most common category ids for your convenience.') . '</div>',
       '#type' => 'fieldset',
       '#title' => t('Configuring Calendar Widget Block 1'),
       '#collapsible' => TRUE, // Added
-      '#collapsed' => FALSE,  // Added
+      '#collapsed' => TRUE,  // Added
   );
 //  $form['calendar_widget_block_1']['calendar_widget_dates_options'] = array(
 //      '#type' => 'select',
