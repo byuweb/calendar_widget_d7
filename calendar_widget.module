@@ -245,7 +245,7 @@ $i = 2;
 //  for ($i = 2; $i <= $numberofBlocks; $i++) {
     $blockName = 'calendar_widget_block_' . $i;
     $blockTitle = 'Calendar Events Block ' . $i;
-    $blocks[$blockName] = array(
+    $blocks['calendar_widget_block_2'] = array(
       // The name that will appear in the block list.
         'info' => t($blockTitle),
       // Default setting.
