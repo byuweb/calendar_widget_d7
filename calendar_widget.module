@@ -231,16 +231,17 @@ function calendar_widget_print_blocks_settings($numberofBlocks) {
 
 function calendar_widget_print_block_info($blocks) {
   // go find out how many blocks there should be
-
+  $numberofBlocks = variable_get('calendar_widget_blocks_number', 1);
+  // HERE HERE Katria get this to work so it will print out however many are needed..
   // testing basic getting 2 blocks
   $blocks['calendar_widget_block_2'] = array(
     // The name that will appear in the block list.
-      'info' => t('Calendar Widget Block 2'),
+      'info' => t($numberofBlocks),
     // Default setting.
       'cache' => DRUPAL_CACHE_PER_ROLE,
   );
 
-//  $numberofBlocks = variable_get('calendar_widget_blocks_number', 1);
+
 //  for ($i = 2; $i <= $numberofBlocks; $i++) {
 //    $blockName = 'calendar_widget_block_' . $i;
 //    $blockTitle = 'Calendar Events Block ' . $i;
