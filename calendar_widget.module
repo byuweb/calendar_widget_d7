@@ -662,6 +662,8 @@ function calendar_widget_contents() {
 
 function calendar_widget_block_view($delta = '') {
 
+// get block number from delta
+  $blockNum = substr($delta, -1);
 
 //  switch ($delta) {
 //    case 'calendar_widget_block_1':
@@ -670,7 +672,7 @@ function calendar_widget_block_view($delta = '') {
         // Retrieve and process data here.
         // Use our custom function to retrieve data.
 //        $result = calendar_widget_contents();
-        $result = calendar_widget_fetch_events(1);
+        $result = calendar_widget_fetch_events($blockNum);
         // Array to contain items for the block to render.
         //$items = array();
 
