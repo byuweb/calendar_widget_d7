@@ -303,7 +303,7 @@ function calendar_widget_block_info() {
 /* -- custom fxn to fetch calendar events and return data for a block -- */
 function calendar_widget_fetch_events($blockNum){
   // pull how many days forward to go
-  $daysField = 'calendar_widget_categories_' . $blockNum;
+  $daysField = 'calendar_widget_dates_' . $blockNum;
   $days = variable_get($daysField, 7);
   // today's time
   $startTime = time();
@@ -656,7 +656,7 @@ function calendar_widget_contents() {
 
 
 /*
-*
+*  When the block loads, fetch events, which fetches things based on block settings..
  *
 */
 
@@ -665,17 +665,10 @@ function calendar_widget_block_view($delta = '') {
 // get block number from delta
   $blockNum = substr($delta, -1);
 
-//  switch ($delta) {
-//    case 'calendar_widget_block_1':
       $block['subject'] = t('Calendar Widget Text');
       if (user_access('access content')) {
-        // Retrieve and process data here.
         // Use our custom function to retrieve data.
-//        $result = calendar_widget_contents();
         $result = calendar_widget_fetch_events($blockNum);
-        // Array to contain items for the block to render.
-        //$items = array();
-
         // return back to the block
         // No data returned for the block / no events.
           if (empty($result)) {
@@ -685,15 +678,8 @@ function calendar_widget_block_view($delta = '') {
             //Pass data through theme function.
             $block['content'] = t($result);
 
-            //$block['content'] = theme('item_list', array(
-//                'items' => $items));
-//            $block['content'] = t('There are events.');
-            // calendar_widget_fetch_events(){
           }
         }
         return $block;
-
-
-//  }
 
 }
