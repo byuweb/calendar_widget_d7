@@ -9,4 +9,4 @@ dependencies[] = drupal:system (>= 7.40)
 configure = admin/config/date/calendar-widget
 package = BYU Custom
 
-stylesheets[all][] = css/style.css
+stylesheets[all][] = calendar_widget.css
