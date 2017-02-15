@@ -4,22 +4,7 @@
  * Updates the internal category list for BYU from an updated database of colleges and departments.
  */
 
-/**
- * Implements hook_help().
- *
- * Displays help and module information.
- *
- * @param path
- *   Which path of the site we're using to display help
- * @param arg
- *   Array that holds the current path as returned from arg() function
- */
-//function calendar_widget_d7_help($path, $arg) {
-//
-////  if($path == 'admin/structure') {
-////    return t('This site has stuff');
-////  }
-//}
+/* ---- add the configuration page to menu --- */
 
 function calendar_widget_d7_menu() {
   $items['admin/config/date/calendar-widget'] = array(
