@@ -1,9 +1,10 @@
 /* ----------- List format -------- */
-.block-calendar-widget {
+.block-calendar-widget-d7 {
    /* width: 289px; */
+    font-family: "Gotham A", "Gotham B";
 }
 
-.block-calendar-widget h2.block-title {
+.block-calendar-widget-d7 h2.block-title {
     border-bottom: 1px solid #e5e5e5;
 }
 
@@ -12,7 +13,7 @@
     margin-right: 20px;
 }
 @media screen and (max-width: 1023px) {
-    .block-calendar-widget {
+    .block-calendar-widget-d7 {
         width: 100%;
     }
     .calendar-widget-block.display-list {
