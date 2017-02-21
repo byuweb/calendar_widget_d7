@@ -356,7 +356,7 @@ function calendar_widget_d7_fetch_events($blockNum){
       break;
   }
 
-  $html = calendar_widget_d7_list_format($jsonArr, $startDate, $endDate);
+ // $html = calendar_widget_d7_list_format($jsonArr, $startDate, $endDate);
 
   return $html;
 }
