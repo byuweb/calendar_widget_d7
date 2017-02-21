@@ -6,6 +6,7 @@
 
 .block-calendar-widget-d7 h2.block-title {
     border-bottom: 1px solid #e5e5e5;
+    font-family: "Sentinel A", "Sentinel B";
 }
 
 .calendar-widget-block.display-list {
@@ -28,7 +29,7 @@
 .date-day-number {
     font-family: "Sentinel A", "Sentinel B";
     font-weight: bold;
-    font-size: 28px;
+    font-size: 26px;
     margin-right: 7px;
 }
 .date-text {
