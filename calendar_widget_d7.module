@@ -481,10 +481,10 @@ function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDat
 //        }
 //        $html .= '</byu-calendar-tile>';
         $html .= '<byu-calendar-tile layout="vertical">  <p slot="date">2017-02-15</p> 	<a href="www.google.com" slot="title">My Event Title</a><p slot="time">7:00 PM</p>	<p slot="location">Wilkinson Ballroom</p></byu-calendar-tile>';
-
+        $count++;
       }
       $html .= '</div>'; // ending the wrapping div with start and end date classes
-      $count++;
+
     }
   }
 
