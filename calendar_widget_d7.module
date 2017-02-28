@@ -464,12 +464,9 @@ function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDat
     $count = 1;
     foreach($jsonArr as $item) {
       while ($count <= 3) {
-//        $html .= '<byu-calendar-tile layout="vertical">';
+        $html .= '<byu-calendar-tile layout="vertical">';
         $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
-//        $html .= '<h3><div class="date">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div></h3>';
-
         $html .= '<a href="' . $item['FullUrl'] . ' " slot="title" target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
-
         if ($item['AllDay'] == false) {
           $html .= '<div class="time" slot="time">' . date("g:i A", strtotime($item['StartDateTime'])). '</div>';
         } else {
@@ -509,25 +506,24 @@ function calendar_widget_d7_horizontal_tiles_limited($jsonArr, $startDate, $endD
     $count = 1;
     foreach($jsonArr as $item) {
       while ($count <= 3) {
-        $html .= '<byu-calendar-tile layout="vertical">';
+        $html .= '<byu-calendar-tile layout="horizontal">';
         $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
-//        $html .= '<h3><div class="date">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div></h3>';
-
         $html .= '<a href="' . $item['FullUrl'] . ' " slot="title" target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
-
         if ($item['AllDay'] == false) {
           $html .= '<div class="time" slot="time">' . date("g:i A", strtotime($item['StartDateTime'])). '</div>';
         } else {
           $html .= '<div class="time" slot="time">All Day</div>';
         }
+        $html .= '<p slot="description">' . $item['Description']. '</p>';
 
         if ($item['LocationName'] != null) {
           $html .= '<div class="location" slot="location">' . $item['LocationName'] . '</div>';
         }
         $html .= '</byu-calendar-tile>';
+        $count++;
       }
       $html .= '</div>'; // ending the wrapping div with start and end date classes
-      $count++;
+
     }
   }
 
