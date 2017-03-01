@@ -157,10 +157,10 @@ Below are the most common category ids for your convenience.') . '</div>',
       '#default_value' => variable_get('calendar_widget_d7_display_type_1', 1),
       '#options' => array(
           1 => t('Simple List (grouped by date)'),
-          2 => t('Vertical tiles (limited to the first 3 events)'),
-          3 => t('Horizontal tiles (limited to the first 3 events)'),
-          4 => t('Vertical tile slider (displaying 3 at a time)'),
-          5 => t('Horizontal tile slider (displaying 3 at a time)'),
+          2 => t('Vertical tiles (select number of tiles shown below)'),
+          3 => t('Horizontal tiles (select number of tiles shown below)'),
+//          4 => t('Vertical tile slider (displaying 3 at a time)'),
+//          5 => t('Horizontal tile slider (displaying 3 at a time)'),
       ),
   );
   $form['calendar_widget_d7_block_1']['calendar_widget_d7_max_number_1'] = array(
@@ -231,10 +231,10 @@ function calendar_widget_d7_print_blocks_settings($form) {
         '#default_value' => variable_get($displayTypeField, 1),
         '#options' => array(
             1 => t('Simple List (grouped by date)'),
-            2 => t('Vertical tiles (limited to the first 3 events)'),
-            3 => t('Horizontal tiles (limited to the first 3 events)'),
-            4 => t('Vertical tile slider (displaying 3 at a time)'),
-            5 => t('Horizontal tile slider (displaying 3 at a time)'),
+            2 => t('Vertical tiles (select number of tiles shown below)'),
+            3 => t('Horizontal tiles (select number of tiles shown below)'),
+//          4 => t('Vertical tile slider (displaying 3 at a time)'),
+//          5 => t('Horizontal tile slider (displaying 3 at a time)'),
         ),
     );
     $form[$blockName][$maxEventsField] = array(
@@ -345,6 +345,7 @@ function calendar_widget_d7_fetch_events($blockNum){
 
   $maxNumberField = 'calendar_widget_d7_max_number_' . $blockNum;
   $limit = variable_get($maxNumberField, -1);
+  // if they enter 0, have no limit:
   if($limit == 0) {
     $limit = -1;
   }
