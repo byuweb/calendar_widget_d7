@@ -554,7 +554,7 @@ function calendar_widget_d7_horizontal_tiles_limited($jsonArr, $startDate, $endD
         $html .= '<div class="time" slot="time">All Day</div>';
       }
 //      print_r($item['Description']);
-      if ($item['Description'] != null) {
+      if ($item['Description'] != 'null') {
         $html .= '<p slot="description">' . $item['Description'] . '</p>';
       }
       if ($item['LocationName'] != null) {
