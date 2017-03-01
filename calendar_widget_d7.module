@@ -237,7 +237,7 @@ function calendar_widget_d7_print_blocks_settings($form) {
             5 => t('Horizontal tile slider (displaying 3 at a time)'),
         ),
     );
-    $form[$blockName[$maxEventsField] = array(
+    $form[$blockName][$maxEventsField] = array(
         '#type' => 'textfield',
         '#title' => t('Maximum Event Limit'),
         '#description' => t("If you want to show the events for the time and categories you've specified but put a maximum number of events for space considerations, enter it here. If left blank, it will use internal defaults which vary per display type., I.e. list won't be limited, 'Vertical Tiles Limited' defaults to 3, etc."),
@@ -248,6 +248,7 @@ function calendar_widget_d7_print_blocks_settings($form) {
         '#field_name' => $maxEventsField,
         '#element_validate' => array ('number_field_widget_validate'),  // only issue is this does allow 0. but we'll still have 1 show anyway..
 //          '#element_validate' => array ('calendar_widget_d7_blocks_number_validate'),
+
     );
 
 
