@@ -168,7 +168,6 @@ Below are the most common category ids for your convenience.') . '</div>',
       '#title' => t('Maximum Event Limit'),
       '#description' => t("If you want to show the events for the time and categories you've specified but put a maximum number of events for space considerations, enter it here. If left blank, it will use internal defaults which vary per display type., I.e. list won't be limited, 'Vertical Tiles Limited' defaults to 3, etc."),
       '#default_value' => variable_get('calendar_widget_d7_max_number_1', 0),
-//      '#language' => 'LANGUAGE_NONE',
       '#size' => 2,
       '#maxlength' => 2,
       '#number_type' => 'integer',
@@ -412,7 +411,7 @@ function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate, $limit) 
     $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . ' calendar-widget-block display-list">';
 //    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 //
-    $html .= '<p>the limit is ' . $limit . '</p>';
+//    $html .= '<p>the limit is ' . $limit . '</p>';
   $currentTime = new DateTime();
   $currentTime->setTimestamp(strtotime("now"));
 
@@ -501,7 +500,7 @@ function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDat
   }
 //    $limit = 3;
     $html = '<div class="tile-container startDate-' . $startDate . ' endDate-' . $endDate . '" style="display: flex; flex-wrap: wrap; ">';
-    $html .= '<p>the limit is ' . $limit . '</p>';
+//    $html .= '<p>the limit is ' . $limit . '</p>';
     $count = 0;
     foreach($jsonArr as $item) {
       if($count == $limit) break;
@@ -542,7 +541,7 @@ function calendar_widget_d7_horizontal_tiles_limited($jsonArr, $startDate, $endD
   } else {
 
     $html = '<div class="tile-container startDate-' . $startDate . ' endDate-' . $endDate . '" style="display: flex; flex-wrap: wrap; ">';
-    $html .= '<p>the limit is ' . $limit . '</p>';
+//    $html .= '<p>the limit is ' . $limit . '</p>';
     $count = 0;
     foreach($jsonArr as $item) {
       if($count == $limit) break;
@@ -554,7 +553,7 @@ function calendar_widget_d7_horizontal_tiles_limited($jsonArr, $startDate, $endD
       } else {
         $html .= '<div class="time" slot="time">All Day</div>';
       }
-      print_r($item['Description']);
+//      print_r($item['Description']);
       $html .= '<p slot="description">' . $item['Description']. '</p>';
 
       if ($item['LocationName'] != null) {
