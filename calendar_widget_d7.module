@@ -197,6 +197,7 @@ function calendar_widget_d7_print_blocks_settings($form) {
     $datesField ='calendar_widget_d7_dates_' . $i;
     $categoriesField ='calendar_widget_d7_categories_' . $i;
     $displayTypeField ='calendar_widget_d7_display_type_' . $i;
+    $maxEventsField ='calendar_widget_d7_max_number_' . $i;
 
 
     $form[$blockName] = array(
@@ -235,6 +236,18 @@ function calendar_widget_d7_print_blocks_settings($form) {
             4 => t('Vertical tile slider (displaying 3 at a time)'),
             5 => t('Horizontal tile slider (displaying 3 at a time)'),
         ),
+    );
+    $form[$blockName[$maxEventsField] = array(
+        '#type' => 'textfield',
+        '#title' => t('Maximum Event Limit'),
+        '#description' => t("If you want to show the events for the time and categories you've specified but put a maximum number of events for space considerations, enter it here. If left blank, it will use internal defaults which vary per display type., I.e. list won't be limited, 'Vertical Tiles Limited' defaults to 3, etc."),
+//      '#default_value' => variable_get('calendar_widget_d7_max_number", '3'),
+        '#size' => 2,
+        '#maxlength' => 2,
+        '#number_type' => 'integer',
+        '#field_name' => $maxEventsField,
+        '#element_validate' => array ('number_field_widget_validate'),  // only issue is this does allow 0. but we'll still have 1 show anyway..
+//          '#element_validate' => array ('calendar_widget_d7_blocks_number_validate'),
     );
 
 
@@ -302,6 +315,7 @@ function calendar_widget_d7_fetch_events($blockNum){
   // pull how many days forward to go
   $daysField = 'calendar_widget_d7_dates_' . $blockNum;
   $days = variable_get($daysField, 7);
+
   // today's time
   $startTime = time();
   //Get today's date
@@ -326,6 +340,9 @@ function calendar_widget_d7_fetch_events($blockNum){
 
   $categories = str_replace(",", "+", $categoriesString);
   $categories = str_replace(" ", "", $categories);
+
+  $maxNumberField = 'calendar_widget_d7_max_number_' . $blockNum;
+  $limit = variable_get($maxNumberField, -1);
   // placeholder
   //
 //  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
@@ -349,22 +366,22 @@ function calendar_widget_d7_fetch_events($blockNum){
 
   switch ($displayType) {
     case 1:  // list type, grouped by date
-      $html = calendar_widget_d7_list_format($jsonArr, $startDate, $endDate);
+      $html = calendar_widget_d7_list_format($jsonArr, $startDate, $endDate, $limit);
       break;
     case 2:  // Vertical tiles, limited to first 3
-      $html = calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDate);
+      $html = calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDat, $limit);
       break;
     case 3:  // Horizontal tiles, limited to first 3
-      $html = calendar_widget_d7_hoizontal_tiles_limited($jsonArr, $startDate, $endDate);
+      $html = calendar_widget_d7_hoizontal_tiles_limited($jsonArr, $startDate, $endDate, $limit);
       break;
     case 4:  // Vertical tiles, showing 3 in a slider
-      $html = calendar_widget_d7_vertical_tiles_slider($jsonArr, $startDate, $endDate);
+      $html = calendar_widget_d7_vertical_tiles_slider($jsonArr, $startDate, $endDate, $limit);
       break;
     case 5:  // Horizontal tiles, showing 3 in a slider
-      $html = calendar_widget_d7_horizontal_tiles_slider($jsonArr, $startDate, $endDate);
+      $html = calendar_widget_d7_horizontal_tiles_slider($jsonArr, $startDate, $endDate, $limit);
       break;
     default:
-      $html = calendar_widget_d7_list_format($jsonArr, $startDate, $endDate);
+      $html = calendar_widget_d7_list_format($jsonArr, $startDate, $endDate, $limit);
       break;
   }
 
@@ -379,7 +396,7 @@ function calendar_widget_d7_fetch_events($blockNum){
 *  1. List format is default simple list format, listed by date groups. This is the default format.
  * It takes the array of json, the startDate and the endDate
  */
-function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate) {
+function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate, $limit) {
 
   if (empty($jsonArr)) {
     // list is empty.
@@ -393,8 +410,9 @@ function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate) {
   $currentTime->setTimestamp(strtotime("now"));
 
     $first_item = true;
-
+    $count = 0;
     foreach($jsonArr as $item) {
+      if($count == $limit) break;
 //    $html .= '<p>There is an event.<p>';
       $new_date = new DateTime();
       $new_date->setTimestamp(strtotime($item['StartDateTime']));
@@ -454,6 +472,7 @@ function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate) {
 //    }
       $html .= '</div>';
       $html .= '</div>';
+      $count++;
     }
     $html .= '</div>'; // ending the wrapping div with start and end date classes
   }
@@ -464,18 +483,20 @@ function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate) {
 *  2. Vertical Tiles Limited format shows 3 vertical tiles
  *  * It takes the array of json, the startDate and the endDate
  */
-function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDate) {
+function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDate, $limit) {
 
   if (empty($jsonArr)) {
     // list is empty.
     $html = "<h3>No events.</h3>";
   } else {
-
+  if($limit == -1) {
+    $limit = 3;
+  }
     $html = '<div class="tile-container startDate-' . $startDate . ' endDate-' . $endDate . '" style="display: flex; flex-wrap: wrap; ">';
 
     $count = 0;
     foreach($jsonArr as $item) {
-      if($count == 3) break;
+      if($count == $limit) break;
       $html .= '<byu-calendar-tile layout="vertical">';
       $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
       $html .= '<a href="' . $item['FullUrl'] . ' " slot="title" target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
@@ -505,7 +526,7 @@ function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDat
 *  3. Horizontal Tiles Limited format shows 3 horizontal tiles
  *  * It takes the array of json, the startDate and the endDate
  */
-function calendar_widget_d7_horizontal_tiles_limited($jsonArr, $startDate, $endDate) {
+function calendar_widget_d7_horizontal_tiles_limited($jsonArr, $startDate, $endDate, $limit) {
 
   if (empty($jsonArr)) {
     // list is empty.
@@ -548,7 +569,7 @@ function calendar_widget_d7_horizontal_tiles_limited($jsonArr, $startDate, $endD
 *  4. Vertical Tiles Slider format shows 3 vertical tiles, scrolling through a slider
  *  * It takes the array of json, the startDate and the endDate
  */
-function calendar_widget_d7_vertical_tiles_slider($jsonArr, $startDate, $endDate) {
+function calendar_widget_d7_vertical_tiles_slider($jsonArr, $startDate, $endDate, $limit) {
 
   if (empty($jsonArr)) {
     // list is empty.
@@ -565,7 +586,7 @@ function calendar_widget_d7_vertical_tiles_slider($jsonArr, $startDate, $endDate
 *  5. Horizontal Tiles Slider format shows 3 horizontal tiles, scrolling through a slider
  *  * It takes the array of json, the startDate and the endDate
  */
-function calendar_widget_d7_hoizontal_tiles_slider($jsonArr, $startDate, $endDate) {
+function calendar_widget_d7_hoizontal_tiles_slider($jsonArr, $startDate, $endDate, $limit) {
 
   if (empty($jsonArr)) {
     // list is empty.
