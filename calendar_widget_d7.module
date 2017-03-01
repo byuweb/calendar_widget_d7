@@ -173,7 +173,7 @@ Below are the most common category ids for your convenience.') . '</div>',
       '#maxlength' => 2,
       '#number_type' => 'integer',
       '#field_name' => 'calendar_widget_d7_max_number_1',
-      '#element_validate' => array ('number_field_widget_validate'),  // only issue is this does allow 0. but we'll still have 1 show anyway..
+//      '#element_validate' => array ('number_field_widget_validate'),  // only issue is this does allow 0. but we'll still have 1 show anyway..
 //          '#element_validate' => array ('calendar_widget_d7_blocks_number_validate'),
   );
 
@@ -248,7 +248,7 @@ function calendar_widget_d7_print_blocks_settings($form) {
         '#maxlength' => 2,
         '#number_type' => 'number',
         '#field_name' => $maxEventsField,
-        '#element_validate' => array ('number_field_widget_validate'),  // only issue is this does allow 0. but we'll still have 1 show anyway..
+//        '#element_validate' => array ('number_field_widget_validate'),  // only issue is this does allow 0. but we'll still have 1 show anyway..
 //          '#element_validate' => array ('calendar_widget_d7_blocks_number_validate'),
 
     );
@@ -346,9 +346,9 @@ function calendar_widget_d7_fetch_events($blockNum){
 
   $maxNumberField = 'calendar_widget_d7_max_number_' . $blockNum;
   $limit = variable_get($maxNumberField, 0);
-  if($limit == 0) {
-    $limit = -1;
-  }
+//  if($limit == 0) {
+//    $limit = -1;
+//  }
   // placeholder
   //
 //  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
