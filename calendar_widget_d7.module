@@ -463,7 +463,7 @@ function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDat
 
     $count = 1;
     foreach($jsonArr as $item) {
-      if($count == 3) break;
+      if($count == 4) break;
       $html .= '<byu-calendar-tile layout="vertical">';
       $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
       $html .= '<a href="' . $item['FullUrl'] . ' " slot="title" target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
@@ -504,7 +504,7 @@ function calendar_widget_d7_horizontal_tiles_limited($jsonArr, $startDate, $endD
 
     $count = 1;
     foreach($jsonArr as $item) {
-      if($count == 3) break;
+      if($count == 4) break;
       $html .= '<byu-calendar-tile layout="horizontal">';
       $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
       $html .= '<a href="' . $item['FullUrl'] . ' " slot="title" target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
