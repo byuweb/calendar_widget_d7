@@ -1,3 +1,4 @@
+
 /* ----------- List format -------- */
 .block-calendar-widget-d7 {
    /* width: 289px; */
@@ -60,4 +61,10 @@
 }
 
 
+/* ---- Vertical & Horizontal Tiles ---- */
+.tile-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0px;
+)
 
