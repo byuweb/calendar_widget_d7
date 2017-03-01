@@ -412,6 +412,7 @@ function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate, $limit) 
     $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . ' calendar-widget-block display-list">';
 //    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 //
+    $html .= '<p>the limit is ' . $limit . '</p>';
   $currentTime = new DateTime();
   $currentTime->setTimestamp(strtotime("now"));
 
@@ -498,6 +499,7 @@ function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDat
   if($limit == -1) {
     $limit = 3;
   }
+    $limit = 3;
     $html = '<div class="tile-container startDate-' . $startDate . ' endDate-' . $endDate . '" style="display: flex; flex-wrap: wrap; ">';
     $html .= '<p>the limit is ' . $limit . '</p>';
     $count = 0;
