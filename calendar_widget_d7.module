@@ -345,7 +345,7 @@ function calendar_widget_d7_fetch_events($blockNum){
   $categories = str_replace(" ", "", $categories);
 
   $maxNumberField = 'calendar_widget_d7_max_number_' . $blockNum;
-  $limit = variable_get($maxNumberField, -1);
+  $limit = variable_get($maxNumberField, 0);
   if($limit == 0) {
     $limit = -1;
   }
@@ -499,7 +499,7 @@ function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDat
   if($limit == -1) {
     $limit = 3;
   }
-    $limit = 3;
+//    $limit = 3;
     $html = '<div class="tile-container startDate-' . $startDate . ' endDate-' . $endDate . '" style="display: flex; flex-wrap: wrap; ">';
     $html .= '<p>the limit is ' . $limit . '</p>';
     $count = 0;
