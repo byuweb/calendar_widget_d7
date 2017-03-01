@@ -345,9 +345,9 @@ function calendar_widget_d7_fetch_events($blockNum){
 
   $maxNumberField = 'calendar_widget_d7_max_number_' . $blockNum;
   $limit = variable_get($maxNumberField, 0);
-//  if($limit == 0) {
-//    $limit = -1;
-//  }
+  if($limit == 0) {
+    $limit = -1;
+  }
   // placeholder
   //
 //  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
