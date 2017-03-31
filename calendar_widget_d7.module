@@ -233,8 +233,10 @@ function calendar_widget_d7_print_blocks_settings($form) {
             1 => t('Simple List (grouped by date)'),
             2 => t('Vertical tiles (select number of tiles shown below)'),
             3 => t('Horizontal tiles (select number of tiles shown below)'),
-//          4 => t('Vertical tile slider (displaying 3 at a time)'),
-//          5 => t('Horizontal tile slider (displaying 3 at a time)'),
+            4 => t('Full page responsive display of row, including ticket info'),
+//            5 => t('Full page responsive display of row, with images and ticket info'),
+//          6 => t('Vertical tile slider (displaying 3 at a time)'),
+//          7 => t('Horizontal tile slider (displaying 3 at a time)'),
         ),
     );
     $form[$blockName][$maxEventsField] = array(
