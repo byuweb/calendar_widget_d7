@@ -658,8 +658,8 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
 ////    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 ////
 ////    $html .= '<p>the limit is ' . $limit . '</p>';
-    $currentTime = new DateTime();
-    $currentTime->setTimestamp(strtotime("now"));
+//    $currentTime = new DateTime();
+//    $currentTime->setTimestamp(strtotime("now"));
 //
 //    $first_item = true;
 //    $count = 0;
@@ -670,11 +670,11 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
 //      $new_date->setTimestamp(strtotime($item['StartDateTime']));
 //      // set date's timezone if needed
 //
-      if ($first_item) {
-        $html .= '<div class="date-wrapper"><div class="date-day-number">' . date("j", strtotime($item['StartDateTime'])) . '</div><div class="date-text">' . date("M, l", strtotime($item['StartDateTime'])) . '</div></div>';
-        $currentTime = $new_date;
-        $first_item = false;
-      }
+//      if ($first_item) {
+//        $html .= '<div class="date-wrapper"><div class="date-day-number">' . date("j", strtotime($item['StartDateTime'])) . '</div><div class="date-text">' . date("M, l", strtotime($item['StartDateTime'])) . '</div></div>';
+//        $currentTime = $new_date;
+//        $first_item = false;
+//      }
 
 //      $diff = $currentTime->diff($new_date);
 //
