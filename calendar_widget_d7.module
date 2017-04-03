@@ -670,11 +670,11 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
 //      $new_date->setTimestamp(strtotime($item['StartDateTime']));
 //      // set date's timezone if needed
 //
-//      if ($first_item) {
-//        $html .= '<div class="date-wrapper"><div class="date-day-number">' . date("j", strtotime($item['StartDateTime'])) . '</div><div class="date-text">' . date("M, l", strtotime($item['StartDateTime'])) . '</div></div>';
-//        $currentTime = $new_date;
-//        $first_item = false;
-//      }
+      if ($first_item) {
+        $html .= '<div class="date-wrapper"><div class="date-day-number">' . date("j", strtotime($item['StartDateTime'])) . '</div><div class="date-text">' . date("M, l", strtotime($item['StartDateTime'])) . '</div></div>';
+        $currentTime = $new_date;
+        $first_item = false;
+      }
 //
 //      $diff = $currentTime->diff($new_date);
 //
@@ -809,7 +809,8 @@ function calendar_widget_d7_contents() {
 
 function calendar_widget_d7_block_view($delta = '') {
 // load calendar tile components
-  drupal_add_js('//cdn.byu.edu/byu-calendar-tile/latest/byu-calendar-tile.js', 'external');
+//  drupal_add_js('//cdn.byu.edu/byu-calendar-tile/latest/byu-calendar-tile.js', 'external');
+  drupal_add_js('//cdn.byu.edu/byu-calendar-tile/latest/component.js', 'external');
   drupal_add_js('//cdn.byu.edu/byu-calendar-row/latest/byu-calendar-row.js', 'external');
   // Adding Hoeffler fonts
 //  drupal_add_css('//cloud.typography.com/75214/6517752/css/fonts.css', array('type' => 'external'));
