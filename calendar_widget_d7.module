@@ -690,7 +690,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
     $count = 0;
     foreach($jsonArr as $item) {
       if($count == $limit) break;
-      $dateString = strtotime($item['StartDateTime'])
+      $dateString = strtotime($item['StartDateTime']);
       $dateSection = date("Y-M-j", $dateString);
 
       if($count == 0) {
