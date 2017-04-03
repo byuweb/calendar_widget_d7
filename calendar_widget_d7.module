@@ -685,7 +685,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
 //      }
 
 
-    $html = '<div class="tile-container startDate-' . $startDate . ' endDate-' . $endDate . '">';
+//    $html = '<div class="tile-container startDate-' . $startDate . ' endDate-' . $endDate . '">';
 //    $html .= '<p>the limit is ' . $limit . '</p>';
     $count = 0;
     foreach($jsonArr as $item) {
