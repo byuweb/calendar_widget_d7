@@ -763,7 +763,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
     $html = "<h3>No events.</h3>";
   } else {
 
-    $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . ' calendar-widget-block display-list">';
+//    $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . ' calendar-widget-block display-list">';
 //    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 //
 //    $html .= '<p>the limit is ' . $limit . '</p>';
@@ -833,7 +833,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
       $html .= '</byu-calendar-row>';
       $count++;
     }
-    $html .= '</div>'; // ending the wrapping div with start and end date classes
+//    $html .= '</div>'; // ending the wrapping div with start and end date classes
   }
   return $html;
 }
