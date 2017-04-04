@@ -780,7 +780,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
       // set date's timezone if needed
 
       if ($first_item) {
-        $html .= '<div class="fullpage-date-wrapper"><div class="fullpage-date-weekday">' . date("l", strtotime($item['StartDateTime'])) . ' | ' . '</div><div class="fullpage-date-text">' . date("M j, Y", strtotime($item['StartDateTime'])) . '</div></div>';
+        $html .= '<div class="fullpage-date-wrapper"><div class="fullpage-date-weekday">' . date("l", strtotime($item['StartDateTime'])) . ' | ' . '</div><div class="fullpage-date-text">' . date("F j, Y", strtotime($item['StartDateTime'])) . '</div></div>';
         $currentTime = $new_date;
         $first_item = false;
       }
@@ -789,7 +789,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
 
       if ($diff->format('%a') !== '0') {
 //        $html .= '<h3><div class="date-text">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div></h3>';
-        $html .= '<div class="fullpage-date-wrapper"><div class="fullpage-date-weekday">' . date("l", strtotime($item['StartDateTime'])) . ' | ' . '</div><div class="fullpage-date-text">' . date("M j, Y", strtotime($item['StartDateTime'])) . '</div></div>';
+        $html .= '<div class="fullpage-date-wrapper"><div class="fullpage-date-weekday">' . date("l", strtotime($item['StartDateTime'])) . ' | ' . '</div><div class="fullpage-date-text">' . date("F j, Y", strtotime($item['StartDateTime'])) . '</div></div>';
         $currentTime = $new_date;
       }
 
