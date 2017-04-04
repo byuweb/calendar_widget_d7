@@ -68,3 +68,19 @@
     margin: 20px 0px;
 }
 
+
+/* date headings for image style, tehse are technically outside the component */
+.fullpage-date-wrapper {
+    color: #002e5d;
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 25px;
+    /*font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B";*/
+    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B";
+}
+.fullpage-date-weekday {
+    text-transform: uppercase;
+}
+.fullpage-date-text {
+
+}
