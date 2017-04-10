@@ -76,12 +76,14 @@
     font-size: 32px;
     margin-bottom: 25px;
     /*font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B";*/
-    font-family: "Sentinel A", "Sentinel B";
+    /*font-family: "Sentinel A", "Sentinel B";*/
     display: flex;
 }
 .fullpage-date-weekday {
     text-transform: uppercase;
+    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B";
 }
 .fullpage-date-text {
     padding-left: 10px;
+    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B";
 }
