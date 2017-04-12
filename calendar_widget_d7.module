@@ -611,7 +611,7 @@ function calendar_widget_d7_fullpage_rows($jsonArr, $startDate, $endDate, $limit
 
         if($item['IsFree'] == 'true') {
           $html .= '<p slot="price">Free</p>';
-          if ($item['TickerUrl'] != null) {
+          if ($item['TicketUrl'] != null) {
             $html .= '<a slot="tickets-link" target="_blank" href="' . $item['TicketUrl'] . '">FREE TICKETS</a>';
           }
         } else { // price or range
@@ -621,7 +621,7 @@ function calendar_widget_d7_fullpage_rows($jsonArr, $startDate, $endDate, $limit
             $html .= '<p slot="price">' . $item['LowPrice'] . '</p>';
           }
 
-          if ($item['TickerUrl'] != null) {
+          if ($item['TicketUrl'] != null) {
             $html .= '<a slot="tickets-link" target="_blank" href="' . $item['TicketUrl'] . '">TICKETS</a>';
           }
         }
@@ -704,7 +704,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
 
         if($item['IsFree'] == 'true') {
           $html .= '<p slot="price">Free</p>';
-          if ($item['TickerUrl'] != null) {
+          if ($item['TicketUrl'] != null) {
             $html .= '<a slot="tickets-link" target="_blank" href="' . $item['TicketUrl'] . '">FREE TICKETS</a>';
           }
         } else { // price or range
@@ -714,7 +714,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
             $html .= '<p slot="price">' . $item['LowPrice'] . '</p>';
           }
 
-          if ($item['TickerUrl'] != null) {
+          if ($item['TicketUrl'] != null) {
             $html .= '<a slot="tickets-link" target="_blank" href="' . $item['TicketUrl'] . '">TICKETS</a>';
           }
         }
