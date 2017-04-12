@@ -2,12 +2,12 @@
 /* ----------- List format -------- */
 .block-calendar-widget-d7 {
    /* width: 289px; */
-    font-family: "Gotham A", "Gotham B";
+    font-family: "Gotham A", "Gotham B", sans-serif;
 }
 
 .block-calendar-widget-d7 h2.block-title {
     border-bottom: 1px solid #e5e5e5;
-    font-family: "Sentinel A", "Sentinel B";
+    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B", serif;
 }
 
 .calendar-widget-block.display-list {
@@ -28,7 +28,7 @@
     margin-bottom: 12px;
 }
 .date-day-number {
-    font-family: "Sentinel A", "Sentinel B";
+    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B", serif;
     font-weight: bold;
     font-size: 26px;
     margin-right: 7px;
@@ -81,9 +81,9 @@
 }
 .fullpage-date-weekday {
     text-transform: uppercase;
-    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B";
+    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B", serif;
 }
 .fullpage-date-text {
     padding-left: 10px;
-    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B";
+    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B", serif;
 }
