@@ -592,7 +592,10 @@ function calendar_widget_d7_fullpage_rows($jsonArr, $startDate, $endDate, $limit
     $html = '<div class="tile-container startDate-' . $startDate . ' endDate-' . $endDate . '">';
 //    $html .= '<p>the limit is ' . $limit . '</p>';
     $count = 0;
-    foreach($jsonArr as $item) {
+    foreach($jsonArr as $unTrimmedItem) {
+
+      $item = array_map('trim', $unTrimmedItem);
+
       if($count == $limit) break;
       $html .= '<byu-calendar-row type="tile">';
       $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
@@ -607,7 +610,7 @@ function calendar_widget_d7_fullpage_rows($jsonArr, $startDate, $endDate, $limit
       }
 
       // pricing and tickets
-      if($item['TicketsExist'] == ' Yes') {
+      if($item['TicketsExist'] == 'Yes') {
 
         if($item['IsFree'] == 'true') {
           $html .= '<p slot="price">Free</p>';
@@ -713,7 +716,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
             $html .= '<p slot="price">Price: $' . $item['LowPrice'] . '</p>';
           } else {
             // will come back and get high price working
-//            $html .= '<p slot="price">Price: $' . $item['LowPrice'] . '</p>';
+//            $html .= '<p slot="price">Price: $' . $item['LowPrice'lk] . '</p>';
             $html .= '<p slot="price">Price: $' . $item['LowPrice'] . ' - $' . $item['HighPrice'] . '</p>';
           }
 
