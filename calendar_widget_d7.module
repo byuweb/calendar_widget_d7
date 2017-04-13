@@ -615,10 +615,10 @@ function calendar_widget_d7_fullpage_rows($jsonArr, $startDate, $endDate, $limit
             $html .= '<a slot="tickets-link" target="_blank" href="' . $item['TicketUrl'] . '">FREE TICKETS</a>';
           }
         } else { // price or range
-          if ($item['HighPrice'] != null) {
-            $html .= '<p slot="price">' . $item['LowPrice'] . ' - ' . $item['HighPrice'] . '</p>';
+          if ($item['HighPrice'] != "") {
+            $html .= '<p slot="price">Price: $' . $item['LowPrice'] . ' - $' . $item['HighPrice'] . '</p>';
           } else {
-            $html .= '<p slot="price">' . $item['LowPrice'] . '</p>';
+            $html .= '<p slot="price">Price: $' . $item['LowPrice'] . '</p>';
           }
 
           if ($item['TicketUrl'] != null) {
@@ -708,10 +708,10 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
             $html .= '<a slot="tickets-link" target="_blank" href="' . $item['TicketUrl'] . '">FREE TICKETS</a>';
           }
         } else { // price or range
-          if ($item['HighPrice'] != null) {
-            $html .= '<p slot="price">' . $item['LowPrice'] . ' - ' . $item['HighPrice'] . '</p>';
+          if ($item['HighPrice'] != "") {
+            $html .= '<p slot="price">Price: $' . $item['LowPrice'] . ' - $' . $item['HighPrice'] . '</p>';
           } else {
-            $html .= '<p slot="price">' . $item['LowPrice'] . '</p>';
+            $html .= '<p slot="price">Price: $' . $item['LowPrice'] . '</p>';
           }
 
           if ($item['TicketUrl'] != null) {
