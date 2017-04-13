@@ -607,7 +607,7 @@ function calendar_widget_d7_fullpage_rows($jsonArr, $startDate, $endDate, $limit
       }
 
       // pricing and tickets
-      if($item['TicketsExist'] == 'Yes') {
+      if($item['TicketsExist'] == ' Yes') {
 
         if($item['IsFree'] == 'true') {
           $html .= '<p slot="price">Free</p>';
@@ -700,7 +700,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
       }
 
       // pricing and tickets
-      if($item['TicketsExist'] == 'Yes') {
+      if($item['TicketsExist'] == ' Yes') {
 
         if($item['IsFree'] == 'true') {
           $html .= '<p slot="price">Free</p>';
