@@ -59,6 +59,9 @@ Below are the most common category ids for your convenience.') . '</div>',
   $form['category_ids']['home'] = array(
       '#markup' => '<Br><div class="id-list" style="margin-left: 20px;">' . t("<strong>90:</strong> Subscribe to all events featured on the BYU Homepage.") . '</div>',
   );
+  $form['category_ids']['academic'] = array(
+      '#markup' => '<Br><div class="id-list" style="margin-left: 20px;">' . t("<strong>395:</strong> Subscribe to all the Academic Calendar events, deadlines, and holidays.") . '</div>',
+  );
   $form['category_ids']['arts'] = array(
       '#markup' => '<div class="id-list" style="margin-left: 20px;">' . t("<strong>9:</strong> Arts & Entertainment") . '</div>',
   );
