@@ -6,7 +6,8 @@ dependencies[] = calendar:calendar
 dependencies[] = drupal:system (>= 7.40)
 #this naming style is after drupal 7.40
 
-configure = admin/config/date/calendar-widget
+configure = admin/config/byu/calendar-widget
+
 package = BYU Custom
 
 stylesheets[all][] = css/calendar_widget.css

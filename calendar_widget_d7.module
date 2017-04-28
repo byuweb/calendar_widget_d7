@@ -7,7 +7,7 @@
 /* ---- add the configuration page to menu --- */
 
 function calendar_widget_d7_menu() {
-  $items['admin/config/date/calendar-widget'] = array(
+  $items['admin/config/byu/calendar-widget'] = array(
       'title' => 'Calendar Widget',
       'description' => 'Set up calendar widget blocks to display events pulled from calendar.byu.edu.',
 //      'page callback' => 'calendar_widget_d7_overview_page',
