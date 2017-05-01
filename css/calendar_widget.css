@@ -5,7 +5,7 @@
     font-family: "Gotham A", "Gotham B", sans-serif;
 }
 
-.block-calendar-widget-d7 h2.block-title {
+.block-calendar-widget-d7 > h2 {
     border-bottom: 1px solid #e5e5e5;
     font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B", serif;
 }
