@@ -356,7 +356,7 @@ function calendar_widget_d7_fetch_events($blockNum){
   }
   //  Example Url:
 //  $jsonUrl = 'https://calendar.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
-  $jsonUrl = 'http://calendar.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $categories;
+  $jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $categories;
 
   $options = array(
       'http' => array(
