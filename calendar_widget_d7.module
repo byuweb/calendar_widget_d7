@@ -356,7 +356,7 @@ function calendar_widget_d7_fetch_events($blockNum){
   }
   //  Example Url:
 //  $jsonUrl = 'https://calendar.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
-  $jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $categories;
+  $jsonUrl = 'http://calendar.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $categories;
 
   $options = array(
       'http' => array(
@@ -510,7 +510,7 @@ function calendar_widget_d7_vertical_tiles_limited($jsonArr, $startDate, $endDat
     foreach($jsonArr as $item) {
       if($count == $limit) break;
       $html .= '<byu-calendar-tile layout="vertical">';
-      $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
+      $html .= '<p slot="date" >' . date("Y-m-d", strtotime($item['StartDateTime'])) . '</p>';
       $html .= '<a href="' . $item['FullUrl'] . ' " slot="title" target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
 
 
@@ -553,7 +553,7 @@ function calendar_widget_d7_horizontal_tiles_limited($jsonArr, $startDate, $endD
     foreach($jsonArr as $item) {
       if($count == $limit) break;
       $html .= '<byu-calendar-tile layout="horizontal">';
-      $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
+      $html .= '<p slot="date" >' . date("Y-m-d", strtotime($item['StartDateTime'])) . '</p>';
       $html .= '<a href="' . $item['FullUrl'] . ' " slot="title" target="_blank"><div class="title">' . $item['Title'] . '</div></a>';
       if ($item['AllDay'] == 'false') {
         $html .= '<div class="time" slot="time">' . date("g:i A", strtotime($item['StartDateTime'])) . ' ' . $item['Timezone'] . '</div>';
@@ -598,7 +598,7 @@ function calendar_widget_d7_fullpage_rows($jsonArr, $startDate, $endDate, $limit
 
       if($count == $limit) break;
       $html .= '<byu-calendar-row type="tile">';
-      $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
+      $html .= '<p slot="date" >' . date("Y-m-d", strtotime($item['StartDateTime'])) . '</p>';
       $html .= '<a href="' . $item['FullUrl'] . ' " slot="title" target="_blank">' . $item['Title'] . '</a>';
       if ($item['AllDay'] == 'false') {
         $html .= '<div class="time" slot="time">' . date("g:i A", strtotime($item['StartDateTime'])). ' ' . $item['Timezone'] . '</div>';
@@ -690,7 +690,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
       }
 
       $html .= '<byu-calendar-row type="image">';
-//      $html .= '<p slot="date" >' . date("Y-M-j", strtotime($item['StartDateTime'])) . '</p>';
+//      $html .= '<p slot="date" >' . date("Y-m-d", strtotime($item['StartDateTime'])) . '</p>';
 
       $html .= '<img slot="image" src="' . $item['ImgUrl'] . '">';
       $html .= '<a href="' . $item['FullUrl'] . ' " slot="title" target="_blank">' . $item['Title'] . '</a>';
@@ -811,7 +811,7 @@ function calendar_widget_d7_block_view($delta = '') {
   drupal_add_js('//cdn.byu.edu/byu-calendar-tile/latest/byu-calendar-tile.min.js', 'external');
   // once we add this, we can enable this one:
 //  drupal_add_css('//cdn.byu.edu/byu-calendar-tile/latest/byu-calendar-tile.css', array('type' => 'external'));
-  drupal_add_js('//cdn.byu.edu/byu-calendar-row/latest/byu-calendar-row.js', 'external');
+  drupal_add_js('//cdn.byu.edu/byu-calendar-row/latest/byu-calendar-row.min.js', 'external');
   drupal_add_css('//cdn.byu.edu/byu-calendar-row/latest/byu-calendar-row.css', array('type' => 'external'));
   // Adding Hoeffler fonts
 //  drupal_add_css('//cloud.typography.com/75214/6517752/css/fonts.css', array('type' => 'external'));
