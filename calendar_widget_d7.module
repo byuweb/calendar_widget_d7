@@ -53,7 +53,7 @@ function calendar_widget_d7_form($form, &$form_state) {
       '#title' => t('Most Popular Category Ids'),
   );
   $form['category_ids']['intro'] = array(
-      '#markup' => '<div>' . t('The BYU Calendar site provides extensive options for subscribing to various categories (main categories, tags, departments, etc). You can see the full list of options at <a href="https://calendar-test.byu.edu/subscribe" target="_blank">https://calendar.byu.edu/subscribe</a>.
+      '#markup' => '<div>' . t('The BYU Calendar site provides extensive options for subscribing to various categories (main categories, tags, departments, etc). You can see the full list of options at <a href="https://calendar.byu.edu/subscribe" target="_blank">https://calendar.byu.edu/subscribe</a>.
 Below are the most common category ids for your convenience.') . '</div>',
   );
   $form['category_ids']['home'] = array(
@@ -341,8 +341,6 @@ function calendar_widget_d7_fetch_events($blockNum){
   date_timezone_set($endDateOb, timezone_open('America/Denver'));
   $endDate = date_format($endDateOb, 'Y-m-d');
 
-  // convert to Y-m-d format
-
   // get categories
   $categoryField = 'calendar_widget_d7_categories_' . $blockNum;
   $categoriesString = variable_get($categoryField, '90');
@@ -356,10 +354,9 @@ function calendar_widget_d7_fetch_events($blockNum){
   if($limit == 0) {
     $limit = -1;
   }
-  // placeholder
-  //
-//  $jsonUrl = 'https://calendar-test.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
-  $jsonUrl = 'http://calendar-test.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $categories;
+  //  Example Url:
+//  $jsonUrl = 'https://calendar.byu.edu/api/Events?event[min][date]=2017-01-30&event[max][date]=2017-02-05&categories=10+151';
+  $jsonUrl = 'http://calendar.byu.edu/api/Events?event[min][date]=' . $startDate . '&event[max][date]=' . $endDate . '&categories=' . $categories;
 
   $options = array(
       'http' => array(
