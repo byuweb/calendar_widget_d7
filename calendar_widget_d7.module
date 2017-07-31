@@ -7,7 +7,7 @@
 /* ---- add the configuration page to menu --- */
 
 function calendar_widget_d7_menu() {
-  $items['admin/config/byu/calendar-widget'] = array(
+  $items['admin/config/regional/calendar-widget'] = array(
       'title' => 'Calendar Widget',
       'description' => 'Set up calendar widget blocks to display events pulled from calendar.byu.edu.',
 //      'page callback' => 'calendar_widget_d7_overview_page',
@@ -425,11 +425,13 @@ function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate, $limit) 
     foreach($jsonArr as $item) {
       if($count == $limit) break;
 //    $html .= '<p>There is an event.<p>';
-      $new_date = new DateTime();
-      $new_date->setTimestamp(strtotime($item['StartDateTime']));
+        $newDate = date("y-m-d", strtotime($item['StartDateTime']));
+        $new_date = new DateTime();
+        $new_date->setTimestamp(strtotime($item['StartDateTime']));
       // set date's timezone if needed
 
       if ($first_item) {
+        $lastDate = date("y-m-d", strtotime($item['StartDateTime']));
         $html .= '<div class="date-wrapper"><div class="date-day-number">' . date("j", strtotime($item['StartDateTime'])) . '</div><div class="date-text">' . date("M, l", strtotime($item['StartDateTime'])) . '</div></div>';
         $currentTime = $new_date;
         $first_item = false;
@@ -437,7 +439,8 @@ function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate, $limit) 
 
       $diff = $currentTime->diff($new_date);
 
-      if ($diff->format('%a') !== '0') {
+        if (($newDate !== $lastDate) ) {
+//      if ($diff->format('%a') !== '0') {
 //        $html .= '<h3><div class="date-text">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div></h3>';
         $html .= '<div class="date-wrapper"><div class="date-day-number">' . date("j", strtotime($item['StartDateTime'])) . '</div><div class="date-text">' . date("M, l", strtotime($item['StartDateTime'])) . '</div></div>';
         $currentTime = $new_date;
@@ -483,6 +486,7 @@ function calendar_widget_d7_list_format($jsonArr, $startDate, $endDate, $limit) 
 //    }
       $html .= '</div>';
       $html .= '</div>';
+        $lastDate = date("y-m-d", strtotime($item['StartDateTime']));
       $count++;
     }
     $html .= '</div>'; // ending the wrapping div with start and end date classes
@@ -657,7 +661,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
     // list is empty.
     $html = "<h3>No events.</h3>";
   } else {
-
+      $html = '';
 //    $html = '<div class="startDate-' . $startDate . ' endDate-' . $endDate . ' calendar-widget-block display-list">';
 //    $html = '<h3>' . $startDate . ' through ' . $endDate . '</h3><p>HEre is some text.</p><p>And here is some more text.</p>';
 //
@@ -668,25 +672,27 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
     $first_item = true;
     $count = 0;
     foreach($jsonArr as $unTrimmedItem) {
-      $item = array_map('trim', $unTrimmedItem);
+      $item = array_map('trim', $unTrimmedItem); // trim wants this to be a string
       if($count == $limit) break;
 //    $html .= '<p>There is an event.<p>';
-      $new_date = new DateTime();
-      $new_date->setTimestamp(strtotime($item['StartDateTime']));
+      $newDate = date("y-m-d", strtotime($item['StartDateTime']));
+//      $new_date = new DateTime();
+//      $new_date->setTimestamp(strtotime($item['StartDateTime']));
       // set date's timezone if needed
 
       if ($first_item) {
+        $lastDate = date("y-m-d", strtotime($item['StartDateTime']));
         $html .= '<div class="fullpage-date-wrapper"><div class="fullpage-date-weekday">' . date("l", strtotime($item['StartDateTime'])) . ' | ' . '</div><div class="fullpage-date-text">' . date("F j, Y", strtotime($item['StartDateTime'])) . '</div></div>';
         $currentTime = $new_date;
         $first_item = false;
       }
 
-      $diff = $currentTime->diff($new_date);
-
-      if ($diff->format('%a') !== '0') {
+//      $diff = $currentTime->diff($new_date);
+        if (($newDate !== $lastDate) ) {
+//      if ($diff->format('%a') !== '0') {
 //        $html .= '<h3><div class="date-text">' . date("l, F j", strtotime($item['StartDateTime'])) . '</div></h3>';
         $html .= '<div class="fullpage-date-wrapper"><div class="fullpage-date-weekday">' . date("l", strtotime($item['StartDateTime'])) . ' | ' . '</div><div class="fullpage-date-text">' . date("F j, Y", strtotime($item['StartDateTime'])) . '</div></div>';
-        $currentTime = $new_date;
+//        $currentTime = $new_date;
       }
 
       $html .= '<byu-calendar-row type="image">';
@@ -729,6 +735,7 @@ function calendar_widget_d7_fullpage_image_rows($jsonArr, $startDate, $endDate, 
       $html .= '<a href="' . $item['FullUrl'] . '" slot="link" target="_blank">SEE FULL EVENT</a>';
 
       $html .= '</byu-calendar-row>';
+      $lastDate = date("y-m-d", strtotime($item['StartDateTime']));
       $count++;
     }
 //    $html .= '</div>'; // ending the wrapping div with start and end date classes
