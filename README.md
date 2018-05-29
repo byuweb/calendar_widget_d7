@@ -1,4 +1,4 @@
-# calendar-widget
+# DEPRECATED calendar-widget
 
 This widget uses the Events API. You can read about BYU APIs here:
 https://calendar.byu.edu/byu-calendar-api-documentation
