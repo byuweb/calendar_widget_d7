@@ -2,12 +2,12 @@
 /* ----------- List format -------- */
 .block-calendar-widget-d7 {
    /* width: 289px; */
-    font-family: "Gotham A", "Gotham B", sans-serif;
+    font-family: "HCo Ringside Narrow SSm", Arial, sans-serif;
 }
 
 .block-calendar-widget-d7 > h2 {
     border-bottom: 1px solid #e5e5e5;
-    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B", serif;
+    font-family: "HCo Ringside Narrow SSm", Arial, sans-serif;
 }
 
 .calendar-widget-block.display-list {
@@ -28,7 +28,7 @@
     margin-bottom: 12px;
 }
 .date-day-number {
-    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B", serif;
+    font-family: "HCo Ringside Narrow SSm", Arial, sans-serif;
     font-weight: bold;
     font-size: 26px;
     margin-right: 7px;
@@ -75,15 +75,15 @@
     font-weight: bold;
     font-size: 32px;
     margin-bottom: 25px;
-    /*font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B";*/
-    /*font-family: "Sentinel A", "Sentinel B";*/
+    /*font-family: "HCo Ringside Narrow SSm", Arial, sans-serif;*/
+    /*font-family: "HCo Ringside Narrow SSm", Arial, sans-serif;*/
     display: flex;
 }
 .fullpage-date-weekday {
     text-transform: uppercase;
-    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B", serif;
+    font-family: "HCo Ringside Narrow SSm", Arial, sans-serif;
 }
 .fullpage-date-text {
     padding-left: 10px;
-    font-family: "Sentinel A", "Sentinel B", "Vitesse A", "Vitesse B", serif;
+    font-family: "HCo Ringside Narrow SSm", Arial, sans-serif;
 }
